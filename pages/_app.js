@@ -1,7 +1,10 @@
 import React from "react";
 import App, { Container } from "next/app";
 import Head from 'next/head';
+import { ThemeProvider } from 'styled-components'
 import Layout from '../global/Layout';
+import Footer from '../global/Footer';
+import theme from '../theme';
 
 import { getMainMenu } from '../services/wordpress';
 
@@ -29,9 +32,12 @@ export default class MyApp extends App {
 				<Head>
 					<title>Official Soccer Painters Site</title>
 				</Head>
-				<Layout menu={menu}>
-					<Component {...pageProps} />
-				</Layout>
+				<ThemeProvider theme={theme}>
+					<Layout menu={menu}>
+						<Component {...pageProps} />
+						<Footer />
+					</Layout>
+				</ThemeProvider>
 			</Container>
 		);
 	}

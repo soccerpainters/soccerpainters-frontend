@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Flex } from 'rebass';
+
 import { getPosts, getMatchReports } from '../services/wordpress';
 import Card from '../global/Card';
+import Footer from '../global/Footer';
+import Marquee from "../global/Marquee";
 
 class Index extends Component {
 
@@ -20,13 +24,18 @@ class Index extends Component {
 
 	render () {
 		return (
-			<div>
-				{
-					this.props.feed.map(feedItem => {
-						return <Card key={feedItem.id} feedItem={feedItem} />
-					})
-				}
-			</div>
+			<>
+				<Flex>
+					{
+						this.props.feed.map(feedItem => {
+							return <Card key={feedItem.id} feedItem={feedItem} />
+						})
+					}
+				</Flex>
+				<Footer>
+					<Marquee />
+				</Footer>
+			</>
 		)
 	}
 }
