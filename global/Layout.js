@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header'
+import Navigation from './Navigation';
 
 const Layout = (props) => (
 	<div>
-		<Header menu={props.menu} />
+		<Navigation menu={props.menu} />
 		{ props.children }
 	</div>
 )

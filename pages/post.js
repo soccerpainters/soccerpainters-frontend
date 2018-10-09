@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Error from "next/error";
-import PageWrapper from '../global/PageWrapper';
 import { config } from "../config.js";
 
 class Post extends Component {
@@ -30,4 +29,4 @@ class Post extends Component {
 	}
 }
 
-export default PageWrapper(Post);
+export default Post;

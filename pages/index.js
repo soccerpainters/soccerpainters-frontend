@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PageWrapper from '../global/PageWrapper';
 import { getPosts, getMatchReports } from '../services/wordpress';
 import Card from '../global/Card';
 
 class Index extends Component {
 
 	static async getInitialProps () {
+
 		const matchReports = await getMatchReports();
 		const posts = await getPosts();
 		const feed = posts.concat(matchReports).sort((a, b) => {
@@ -21,12 +21,14 @@ class Index extends Component {
 	render () {
 		return (
 			<div>
-				{ this.props.feed.map(feedItem => {
-					return <Card key={feedItem.id} feedItem={feedItem} />
-				})}
+				{
+					this.props.feed.map(feedItem => {
+						return <Card key={feedItem.id} feedItem={feedItem} />
+					})
+				}
 			</div>
 		)
 	}
 }
 
-export default PageWrapper(Index);
+export default Index;

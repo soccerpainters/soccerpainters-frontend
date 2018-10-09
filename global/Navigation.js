@@ -14,11 +14,14 @@ const MenuItem = ({ link }) => {
 const Navigation = (props) => {
 	return (
 		<nav>
-			{props.menu.map(link => {
-				return <MenuItem key={link.ID} link={link} />
-			})}
+			{
+				props.menu.map(link => {
+					return <MenuItem key={link.ID} link={link} />
+				})
+			}
 		</nav>
 	)
 }
 
 export default Navigation;
+
