@@ -1,4 +1,6 @@
-export default {
+import { css } from 'styled-components';
+
+const theme = {
 	fontSizes: [
 		12, 14, 16, 20, 24, 32, 48, 64
 	],
@@ -17,10 +19,21 @@ export default {
 		small: '0 0 4px rgba(0, 0, 0, .125)',
 		large: '0 0 24px rgba(0, 0, 0, .125)'
 	},
-	myBreakpoints: {
-		xs: "480px",
-		sm: "768px",
-		md: "992px",
-		lg: "1200px"
+	sizes: {
+		xs: "480",
+		sm: "768",
+		md: "992",
+		lg: "1200"
 	}
 }
+
+export default theme;
+
+export const media = Object.keys(theme.sizes).reduce((acc, label) => {
+	acc[label] = (...args) => css`
+    @media (min-width: ${theme.sizes[label]}px) {
+      ${css(...args)}
+    }
+  `
+	return acc
+}, {});

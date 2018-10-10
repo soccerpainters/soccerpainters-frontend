@@ -1,6 +1,6 @@
 import React from 'react';
-
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { media } from '../theme';
 import { Box } from "rebass";
 
 const Container = styled(Box)`
@@ -12,17 +12,17 @@ const Marquee = styled(Box)`
 	position:relative;
 	animation: scroll 10s linear infinite;
 
-	@media (min-width: ${props => props.theme.myBreakpoints.sm}) {
-		animation: scroll 12s linear infinite;
-	}
-
-	@media (min-width: ${props => props.theme.myBreakpoints.md}) {
+	${media.sm`
 		animation: scroll 15s linear infinite;
-	}
+	`}
 
-	@media (min-width: ${props => props.theme.myBreakpoints.lg}) {
+	${media.md`
 		animation: scroll 20s linear infinite;
-	}
+	`}
+
+	${media.lg`
+		animation: scroll 25s linear infinite;
+	`}
 
 	&:hover {
 		animation-play-state: paused
@@ -37,7 +37,7 @@ const Marquee = styled(Box)`
 const MarqueeComp = (props) => (
 	<Container>
 		<Marquee>
-			<h3>{ props.text }</h3>
+			<h3>{props.text}</h3>
 		</Marquee>
 	</Container>
 )
