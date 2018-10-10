@@ -35,7 +35,6 @@ export default class MyApp extends App {
 				<ThemeProvider theme={theme}>
 					<Layout menu={menu}>
 						<Component {...pageProps} />
-						<Footer />
 					</Layout>
 				</ThemeProvider>
 			</Container>

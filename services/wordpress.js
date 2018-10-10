@@ -25,3 +25,12 @@ export const getMatchReports = async () => {
 	const matchReports = await matchReportsResponse.json();
 	return matchReports;
 }
+
+export const getNewsBanner = async () => {
+	const newsBannerResponse = await fetch(
+		`${config.apiUrl}/wp-json/wp/v2/banner`
+	)
+	const newsBanner = await newsBannerResponse.json()
+
+	return newsBanner[0];
+}

@@ -16,5 +16,11 @@ export default {
 	shadows: {
 		small: '0 0 4px rgba(0, 0, 0, .125)',
 		large: '0 0 24px rgba(0, 0, 0, .125)'
+	},
+	myBreakpoints: {
+		xs: "480px",
+		sm: "768px",
+		md: "992px",
+		lg: "1200px"
 	}
 }
