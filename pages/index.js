@@ -1,3 +1,4 @@
+import "../css/style.css";
 import React, { Component } from 'react';
 import styled from "styled-components";
 import { getPosts, getMatchReports, getNewsBanner } from '../services/wordpress';
@@ -37,13 +38,13 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<Container>
+				<div className="flex">
 					{
 						this.props.feed.map(feedItem => {
 							return <Card key={feedItem.id} feedItem={feedItem} />
 						})
 					}
-				</Container>
+				</div>
 				<Footer>
 					<Marquee text={this.props.banner.title.rendered} />
 				</Footer>
@@ -58,6 +59,6 @@ export default Index;
 const Container = styled.div`
 	${tw`
 		flex
-		
+
 	`}
 `

@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const Marquee = styled.div`
 
-	${tw`block relative text-primary`}
+	${tw`block relative text-primary py-4`}
 
 	animation: scroll 10s linear infinite;
 
