@@ -7,9 +7,9 @@ const Box = styled.div`
 	border-bottom: 5px solid black;
 `
 
-const Footer = (props) => (
+const Footer = ({ children }) => (
 	<Box>
-		{props.children}
+		{children}
 	</Box>
 )
 
