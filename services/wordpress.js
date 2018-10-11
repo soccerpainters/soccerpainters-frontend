@@ -20,7 +20,7 @@ export const getPosts = async () => {
 
 export const getMatchReports = async () => {
 	const matchReportsResponse = await fetch(
-		`${config.apiUrl}/wp-json/wp/v2/match_report`
+		`${config.apiUrl}/wp-json/wp/v2/match_report?_embed`
 	)
 	const matchReports = await matchReportsResponse.json();
 	return matchReports;

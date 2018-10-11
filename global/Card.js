@@ -3,23 +3,12 @@ import Link from 'next/link';
 import styled from 'styled-components'
 
 const Card = styled.div`
-	${tw` mx-2 p-4 bg-grey-lighter rounded-sm shadow `}
 `;
 
 const CardComp = ({ feedItem }) => {
 	return (
 		<Card>
-			<Link
-				as={`/${feedItem.type}/${feedItem.slug}`}
-				prefetch href={`/${feedItem.type}?slug=${feedItem.slug}&apiRoute=${feedItem.type}`}
-			>
-				<a>
-					{feedItem.title.rendered}
-				</a>
-			</Link>
-			<div className="bg-black">
-				IMG
-			</div>
+			<img src={feedItem.acf.image.sizes.thumbnail} alt={feedItem.acf.image.title}/>
 		</Card>
 	)
 }

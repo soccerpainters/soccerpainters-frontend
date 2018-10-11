@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import Layout from '../global/Layout';
 import theme from '../theme';
 
-import { getMainMenu } from '../services/wordpress';
+import { getMainMenu, getNewsBanner } from '../services/wordpress';
 
 export default class MyApp extends App {
 
@@ -15,25 +15,33 @@ export default class MyApp extends App {
 
 		const menu = await getMainMenu();
 
+		const banner = await getNewsBanner();
+
 		if (Component.getInitialProps) {
 			pageProps = await Component.getInitialProps(ctx)
 		}
 
 		return {
+			router,
 			menu,
+			banner,
 			pageProps
 		};
 	}
 
 	render () {
-		const { Component, pageProps, menu } = this.props;
+		const { Component, pageProps, menu, router, banner } = this.props;
+
+		// Banner is only visible on Index page.
+		const hideBanner = router.asPath !== "/";
+
 		return (
 			<Container>
 				<Head>
 					<title>Official Soccer Painters Site</title>
 				</Head>
 				<ThemeProvider theme={theme}>
-					<Layout menu={menu}>
+					<Layout bannerText={banner} hideBanner={hideBanner} menu={menu}>
 						<Component {...pageProps} />
 					</Layout>
 				</ThemeProvider>

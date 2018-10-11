@@ -3,6 +3,7 @@ import { getPosts, getMatchReports, getNewsBanner } from '../services/wordpress'
 import Card from '../global/Card';
 import PageEnd from '../global/PageEnd';
 import Marquee from "../global/Marquee";
+import StackGrid from "react-stack-grid";
 
 class Index extends Component {
 
@@ -24,29 +25,27 @@ class Index extends Component {
 			return a > b ? -1 : a < b ? 1 : 0;
 		});
 
-		/* Banner Text
-		---------------------------------------------------- */
-		const banner = await getNewsBanner();
-
 		return {
-			feed,
-			banner
+			feed
 		};
 	}
 
 	render () {
 		return (
 			<>
-				<div className="flex overflow-scroll">
-					{
-						this.props.feed.map(feedItem => {
-							return <Card key={feedItem.id} feedItem={feedItem} />
-						})
-					}
+				<div className="p-6">
+					<StackGrid
+						columnWidth={"100%"}
+						gutterWidth={9}
+						gutterHeight={9}
+					>
+						{
+							this.props.feed.map(feedItem => {
+								return <Card key={feedItem.id} feedItem={feedItem} />
+							})
+						}
+					</StackGrid>
 				</div>
-				<PageEnd className="absolute pin-b w-full">
-					<Marquee text={this.props.banner.title.rendered} />
-				</PageEnd>
 			</>
 		)
 	}
