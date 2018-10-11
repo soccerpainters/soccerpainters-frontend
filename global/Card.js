@@ -3,16 +3,8 @@ import Link from 'next/link';
 import styled from 'styled-components'
 
 const Card = styled.div`
-	${tw`
-		mx-2 p-4 bg-grey-lighter rounded-sm shadow
-	`}
-`
-
-const Box = styled.div`
-	${tw`
-		bg-black
-	`}
-`
+	${tw` mx-2 p-4 bg-grey-lighter rounded-sm shadow `}
+`;
 
 const CardComp = ({ feedItem }) => {
 	return (
@@ -25,9 +17,9 @@ const CardComp = ({ feedItem }) => {
 					{feedItem.title.rendered}
 				</a>
 			</Link>
-			<Box>
+			<div className="bg-black">
 				IMG
-			</Box>
+			</div>
 		</Card>
 	)
 }

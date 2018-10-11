@@ -54,11 +54,3 @@ class Index extends Component {
 }
 
 export default Index;
-
-
-const Container = styled.div`
-	${tw`
-		flex
-
-	`}
-`
