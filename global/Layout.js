@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
 import Navigation from './Navigation';
 
+const Box = styled.div`
+	${tw``}
+`
+
 const Layout = (props) => (
-	<div>
+	<Box>
 		<Navigation menu={props.menu} />
 		{ props.children }
-	</div>
+	</Box>
 )
 
 export default Layout;

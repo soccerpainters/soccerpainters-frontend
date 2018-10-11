@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Flex } from 'rebass';
-
+import styled from "styled-components";
 import { getPosts, getMatchReports, getNewsBanner } from '../services/wordpress';
 import Card from '../global/Card';
 import Footer from '../global/Footer';
@@ -38,13 +37,13 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<Flex>
+				<Container>
 					{
 						this.props.feed.map(feedItem => {
 							return <Card key={feedItem.id} feedItem={feedItem} />
 						})
 					}
-				</Flex>
+				</Container>
 				<Footer>
 					<Marquee text={this.props.banner.title.rendered} />
 				</Footer>
@@ -54,3 +53,11 @@ class Index extends Component {
 }
 
 export default Index;
+
+
+const Container = styled.div`
+	${tw`
+		flex
+		
+	`}
+`
