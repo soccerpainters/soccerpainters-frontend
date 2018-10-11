@@ -4,6 +4,10 @@ import styledNormalize from "styled-normalize";
 
 injectGlobal`
     ${styledNormalize}
+
+	body {
+		font-family: "DrukWideMedium";
+	}
 `;
 
 export default class MyDocument extends Document {

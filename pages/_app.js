@@ -1,4 +1,4 @@
-import "../css/style.css";
+import "../assets/css/style.css";
 import React from "react";
 import App, { Container } from "next/app";
 import Head from 'next/head';

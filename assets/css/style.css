@@ -1,0 +1,31 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+/**
+* Used this site to convert font files and generate font face css
+* https://everythingfonts.com/font-face
+* 
+* Stick fonts in folder thats not static.
+*
+* Install this Next / NPM package
+* https://github.com/rohanray/next-fonts
+*
+*/
+@font-face {
+    font-family: 'DrukWideBold';
+    src: url('../fonts/DrukWideBold.eot');
+    src: url('../fonts/DrukWideBold.eot') format('embedded-opentype'),
+         url('../fonts/DrukWideBold.woff2') format('woff2'),
+         url('../fonts/DrukWideBold.woff') format('woff'),
+         url('../fonts/DrukWideBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DrukWideMedium';
+    src: url('../fonts/DrukWideMedium.eot');
+    src: url('../fonts/DrukWideMedium.eot') format('embedded-opentype'),
+         url('../fonts/DrukWideMedium.woff2') format('woff2'),
+         url('../fonts/DrukWideMedium.woff') format('woff'),
+         url('../fonts/DrukWideMedium.ttf') format('truetype');
+}
