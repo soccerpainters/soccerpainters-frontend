@@ -13,11 +13,14 @@ const MenuItem = ({ link }) => {
 
 const Navigation = (props) => {
 	return (
-		<nav>
+		<nav className="p-4 flex justify-between">
+			<Link href="/"><a>Home</a></Link>
+			<Link href="/about"><a>About</a></Link>
+			<Link href="/shop"><a>Shop</a></Link>
 			{
-				props.menu.map(link => {
-					return <MenuItem key={link.ID} link={link} />
-				})
+				// props.menu.map(link => {
+				// 	return <MenuItem key={link.ID} link={link} />
+				// })
 			}
 		</nav>
 	)

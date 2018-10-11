@@ -3,12 +3,17 @@ import styled, { css } from "styled-components";
 import { media } from '../theme';
 
 const Container = styled.div`
-	overflow: hidden;
+	${tw` overflow-hidden `}
 `
 
 const Marquee = styled.div`
 
-	${tw`block relative text-primary py-4`}
+	${tw`block relative p-4`}
+
+	@keyframes scroll {
+		from { left: 100%; }
+		to { left: -100%; }
+	}
 
 	animation: scroll 10s linear infinite;
 
@@ -21,25 +26,13 @@ const Marquee = styled.div`
 	&:hover {
 		animation - play - state: paused
 	}
-
-	@keyframes scroll{
-		0 % { left: 100 %; }
-		100 % { left: -100 %; }
-	}
-
-	${media.md`
-		@keyframes scroll{
-			0% {left: 100%;}
-			100% {left: -50%;}
-		}
-	`}
 `
 
 
 const MarqueeComp = (props) => (
 	<Container>
 		<Marquee>
-			<h3>{props.text}</h3>
+			<h3 className="whitespace-no-wrap">{props.text}</h3>
 		</Marquee>
 	</Container>
 )

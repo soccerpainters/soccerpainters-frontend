@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import Navigation from './Navigation';
+import PageEnd from './PageEnd';
 
 const Box = styled.div`
-	${tw``}
+	${tw` h-screen  `}
 `
 
-const Layout = (props) => (
+const Layout = ({ children, menu }) => (
 	<Box>
-		<Navigation menu={props.menu} />
-		{ props.children }
+		<PageEnd className="absolute pin-t w-full">
+			<Navigation menu={menu} />
+		</PageEnd>
+		{children}
 	</Box>
 )
 

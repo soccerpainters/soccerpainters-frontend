@@ -1,12 +1,12 @@
-import "../css/style.css";
 import React, { Component } from 'react';
-import styled from "styled-components";
 import { getPosts, getMatchReports, getNewsBanner } from '../services/wordpress';
 import Card from '../global/Card';
-import Footer from '../global/Footer';
+import PageEnd from '../global/PageEnd';
 import Marquee from "../global/Marquee";
+import CenterScreen from '../global/CenterScreen';
 
 class Index extends Component {
+
 
 	static async getInitialProps () {
 
@@ -38,16 +38,18 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<div className="flex">
-					{
-						this.props.feed.map(feedItem => {
-							return <Card key={feedItem.id} feedItem={feedItem} />
-						})
-					}
-				</div>
-				<Footer>
+				<CenterScreen className="py-16">
+					<div className="flex overflow-scroll">
+						{
+							this.props.feed.map(feedItem => {
+								return <Card key={feedItem.id} feedItem={feedItem} />
+							})
+						}
+					</div>
+				</CenterScreen>
+				<PageEnd className="absolute pin-b w-full">
 					<Marquee text={this.props.banner.title.rendered} />
-				</Footer>
+				</PageEnd>
 			</>
 		)
 	}
