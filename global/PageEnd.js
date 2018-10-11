@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Box = styled.div`
+	${tw` bg-white `}
 	border-top: 5px solid black;
 	border-bottom: 5px solid black;
 `

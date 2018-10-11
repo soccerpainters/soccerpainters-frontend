@@ -1,22 +1,25 @@
-import React from 'react'
+import React from 'react';
+import styled from "styled-components";
 import Link from 'next/link';
 
-const MenuItem = ({ link }) => {
-	return (
-		<Link
-			href={link.url}
-		>
-			<a>{link.title}</a>
-		</Link>
-	)
-}
+const MenuItem = styled.span`
+	a{
+		${tw` text-black no-underline `}
+	}
+`;
 
 const Navigation = (props) => {
 	return (
 		<nav className="p-4 flex justify-between">
-			<Link href="/"><a>Home</a></Link>
-			<Link href="/about"><a>About</a></Link>
-			<Link href="/shop"><a>Shop</a></Link>
+			<MenuItem>
+				<Link href="/"><a>Home</a></Link>
+			</MenuItem>
+			<MenuItem>
+				<Link href="/about"><a>About</a></Link>
+			</MenuItem>
+			<MenuItem>
+				<Link href="/shop"><a>Shop</a></Link>
+			</MenuItem>
 			{
 				// props.menu.map(link => {
 				// 	return <MenuItem key={link.ID} link={link} />

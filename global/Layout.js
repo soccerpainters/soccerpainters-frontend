@@ -4,7 +4,8 @@ import Navigation from './Navigation';
 import PageEnd from './PageEnd';
 
 const Box = styled.div`
-	${tw` h-screen  `}
+	${tw` h-screen `}
+	padding-top: 60px; // Height of nav
 `
 
 const Layout = ({ children, menu }) => (

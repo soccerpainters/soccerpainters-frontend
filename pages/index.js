@@ -3,7 +3,6 @@ import { getPosts, getMatchReports, getNewsBanner } from '../services/wordpress'
 import Card from '../global/Card';
 import PageEnd from '../global/PageEnd';
 import Marquee from "../global/Marquee";
-import CenterScreen from '../global/CenterScreen';
 
 class Index extends Component {
 
@@ -38,15 +37,13 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<CenterScreen className="py-16">
-					<div className="flex overflow-scroll">
-						{
-							this.props.feed.map(feedItem => {
-								return <Card key={feedItem.id} feedItem={feedItem} />
-							})
-						}
-					</div>
-				</CenterScreen>
+				<div className="flex overflow-scroll">
+					{
+						this.props.feed.map(feedItem => {
+							return <Card key={feedItem.id} feedItem={feedItem} />
+						})
+					}
+				</div>
 				<PageEnd className="absolute pin-b w-full">
 					<Marquee text={this.props.banner.title.rendered} />
 				</PageEnd>

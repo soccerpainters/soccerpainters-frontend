@@ -12,12 +12,22 @@ const Marquee = styled.div`
 
 	@keyframes scroll {
 		from { left: 100%; }
-		to { left: -100%; }
+		to { left: -200%; }
 	}
 
 	animation: scroll 10s linear infinite;
 
-	${media.sm`animation: scroll 15s linear infinite;`}
+	
+	${media.sm`
+
+		@keyframes scroll {
+			from { left: 100%; }
+			to { left: -100%; }
+		}
+
+		animation: scroll 15s linear infinite;
+	
+	`}
 
 	${media.md`animation: scroll 20s linear infinite;`}
 
