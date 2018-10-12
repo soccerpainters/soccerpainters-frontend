@@ -34,3 +34,13 @@ export const getNewsBanner = async () => {
 
 	return newsBanner[0];
 }
+
+export const getArticles = async () => {
+	const articlesResponse = await fetch(
+		`${config.apiUrl}/wp-json/wp/v2/articles`
+	)
+
+	const articles = await articlesResponse.json();
+
+	return articles;
+}
