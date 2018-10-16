@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { getMatchReports, getArticles } from '../services/wordpress';
 import Card from '../global/Card';
-import PageEnd from '../global/PageEnd';
-import Marquee from "../global/Marquee";
 import StackGrid from "react-stack-grid";
 
 class Index extends Component {

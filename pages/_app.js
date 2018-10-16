@@ -5,6 +5,8 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components'
 import Layout from '../global/Layout';
 import theme from '../theme';
+import { Spring } from 'react-spring';
+import NProgress from "next-nprogress/component";
 
 import { getMainMenu, getNewsBanner } from '../services/wordpress';
 
@@ -41,9 +43,15 @@ export default class MyApp extends App {
 					<title>Official Soccer Painters Site</title>
 				</Head>
 				<ThemeProvider theme={theme}>
-					<Layout bannerText={banner} hideBanner={hideBanner} menu={menu}>
-						<Component {...pageProps} />
-					</Layout>
+					<NProgress />
+					<Spring
+						from={{ opacity: 0 }}
+						to={{ opacity: 1 }}
+					>
+						{props => <Layout style={props} bannerText={banner} hideBanner={hideBanner} menu={menu}>
+							<Component {...pageProps} />
+						</Layout>}
+					</Spring>
 				</ThemeProvider>
 			</Container>
 		);

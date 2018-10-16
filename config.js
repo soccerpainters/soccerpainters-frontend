@@ -1,4 +1,4 @@
-export const config = { apiUrl: 'http://localhost:8080' }
+export const config = { apiUrl: 'http://localhost:3001' }
 
 // require('dotenv').config();
 // import convict from 'convict'
