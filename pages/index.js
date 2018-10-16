@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getMatchReports, getArticles } from '../services/wordpress';
 import Card from '../global/Card';
 import StackGrid from "react-stack-grid";
+import MediaQuery from 'react-responsive';
+import theme from '../tailwind';
 
 class Index extends Component {
 
@@ -32,18 +34,48 @@ class Index extends Component {
 		return (
 			<>
 				<div className="p-6">
-					<StackGrid
-						columnWidth={"100%"}
-						gutterWidth={50}
-						gutterHeight={50}
-						monitorImagesLoaded={true}
-					>
-						{
-							this.props.feed.map(feedItem => {
-								return <Card key={feedItem.id} feedItem={feedItem} />
-							})
-						}
-					</StackGrid>
+					<MediaQuery query={`(max-width: ${theme.screens.sm})`}>
+						<StackGrid
+							columnWidth={"100%"}
+							gutterWidth={50}
+							gutterHeight={50}
+							monitorImagesLoaded={true}
+						>
+							{
+								this.props.feed.map(feedItem => {
+									return <Card key={feedItem.id} feedItem={feedItem} />
+								})
+							}
+						</StackGrid>
+					</MediaQuery>
+					<MediaQuery minWidth={theme.views.sm} maxWidth={theme.views.lg}>
+						<StackGrid
+							columnWidth={"50%"}
+							gutterWidth={50}
+							gutterHeight={50}
+							monitorImagesLoaded={true}
+						>
+							{
+								this.props.feed.map(feedItem => {
+									return <Card key={feedItem.id} feedItem={feedItem} />
+								})
+							}
+						</StackGrid>
+					</MediaQuery>
+					<MediaQuery minWidth={theme.views.lg}>
+						<StackGrid
+							columnWidth={"33.33%"}
+							gutterWidth={50}
+							gutterHeight={50}
+							monitorImagesLoaded={true}
+						>
+							{
+								this.props.feed.map(feedItem => {
+									return <Card key={feedItem.id} feedItem={feedItem} />
+								})
+							}
+						</StackGrid>
+					</MediaQuery>
 				</div>
 			</>
 		)

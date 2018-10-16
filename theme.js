@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import theme from './tailwind'
+import theme from './tailwind';
 
 export default theme;
 
