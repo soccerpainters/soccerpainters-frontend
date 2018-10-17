@@ -12,10 +12,10 @@ const Navigation = (props) => {
 	return (
 		<nav className="p-4 flex justify-between">
 			<MenuItem>
-				<Link href="/"><a>Home</a></Link>
+				<Link href="/about"><a>About</a></Link>
 			</MenuItem>
 			<MenuItem>
-				<Link href="/about"><a>About</a></Link>
+				<Link href="/"><a>Soccer Painters</a></Link>
 			</MenuItem>
 			<MenuItem>
 				<Link href="/shop"><a>Shop</a></Link>

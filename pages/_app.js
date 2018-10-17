@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import Layout from '../global/Layout';
 import theme from '../theme';
 import { Spring } from 'react-spring';
+import Favicon from '../global/Favicon';
 
 import { getMainMenu, getNewsBanner } from '../services/wordpress';
 
@@ -40,6 +41,7 @@ export default class MyApp extends App {
 			<Container>
 				<Head>
 					<title>Official Soccer Painters Site</title>
+					<Favicon />
 				</Head>
 				<ThemeProvider theme={theme}>
 					<Spring

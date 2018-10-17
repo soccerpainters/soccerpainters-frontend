@@ -3,17 +3,23 @@ import Navigation from './Navigation';
 import MobileNavigation from './MobileNavigation';
 import PageEnd from './PageEnd';
 import Marquee from './Marquee';
+import MediaQuery from 'react-responsive';
+import theme from '../tailwind';
 
 const Layout = ({ children, menu, hideBanner, bannerText }) => (
 	<div className="flex flex-col min-h-screen">
 		<header>
 			<PageEnd className="w-full fixed pin-t z-10 border-black border-solid border-b-4">
-				<MobileNavigation />
-				{ /** <Navigation menu={menu} /> */}
+				<MediaQuery maxWidth={theme.views.md -1}>
+					<MobileNavigation />
+				</MediaQuery>
+				<MediaQuery minWidth={theme.views.md}>
+					<Navigation menu={menu} />
+				</MediaQuery>
 			</PageEnd>
 		</header>
 		<div id="modal-root"></div>
-		<div className="flex-1 container mx-auto pb-12 mt-16">
+		<div className="flex flex-grow container mx-auto pb-12 mt-16">
 			{children}
 		</div>
 		<footer>

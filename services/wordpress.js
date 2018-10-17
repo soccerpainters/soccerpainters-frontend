@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import {config} from '../config';
+import { config } from '../config';
 
 
 export const getMainMenu = async () => {
@@ -18,14 +18,6 @@ export const getPosts = async () => {
 	return posts;
 }
 
-export const getMatchReports = async () => {
-	const matchReportsResponse = await fetch(
-		`${config.apiUrl}/wp-json/wp/v2/match_report?_embed`
-	)
-	const matchReports = await matchReportsResponse.json();
-	return matchReports;
-}
-
 export const getNewsBanner = async () => {
 	const newsBannerResponse = await fetch(
 		`${config.apiUrl}/wp-json/wp/v2/banner`
@@ -35,12 +27,16 @@ export const getNewsBanner = async () => {
 	return newsBanner[0];
 }
 
+export const getMatchReports = async () => {
+	const matchReportsResponse = await fetch(
+		`${config.apiUrl}/wp-json/wp/v2/match_report?_embed`
+	);
+	return matchReportsResponse.json();
+}
+
 export const getArticles = async () => {
 	const articlesResponse = await fetch(
-		`${config.apiUrl}/wp-json/wp/v2/articles`
+		`${config.apiUrl}/wp-json/wp/v2/article?_embed`
 	)
-
-	const articles = await articlesResponse.json();
-
-	return articles;
+	return articlesResponse.json();
 }

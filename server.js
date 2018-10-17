@@ -11,28 +11,14 @@ app
 		const server = express();
 
 		server.get("/match_report/:slug", (req, res) => {
-			console.log('MATCH REPORT');
 			const actualPage = "/match_report";
 			const queryParams = { slug: req.params.slug, apiRoute: "match_report" };
 			app.render(req, res, actualPage, queryParams);
 		});
 
-		server.get("/post/:slug", (req, res) => {
-			console.log('POST ARTICLE');
-			const actualPage = "/post";
-			const queryParams = { slug: req.params.slug, apiRoute: "post" };
-			app.render(req, res, actualPage, queryParams);
-		});
-
-		server.get("/page/:slug", (req, res) => {
-			const actualPage = "/post";
-			const queryParams = { slug: req.params.slug, apiRoute: "page" };
-			app.render(req, res, actualPage, queryParams);
-		});
-
-		server.get("/category/:slug", (req, res) => {
-			const actualPage = "/category";
-			const queryParams = { slug: req.params.slug };
+		server.get("/article/:slug", (req, res) => {
+			const actualPage = "/article";
+			const queryParams = { slug: req.params.slug, apiRoute: "article" };
 			app.render(req, res, actualPage, queryParams);
 		});
 

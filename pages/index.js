@@ -5,19 +5,12 @@ import Responsive from '../global/Responsive';
 
 class Index extends Component {
 
-
 	static async getInitialProps () {
 
-		/* Index News Feed 
-		---------------------------------------------------- */
-		// Get match reports
-		const matchReports = await getMatchReports();
-
-		// Get Articles
-		const articles = await getArticles();
+		const [ articles, matchReports ] = await Promise.all([getArticles(), getMatchReports()]);
 
 		// Merge and and sort by date to create feed
-		const feed = articles.concat(matchReports).sort((a, b) => {
+		const feed = [...articles, ...matchReports].sort((a, b) => {
 			a = new Date(a.date);
 			b = new Date(b.date);
 			return a > b ? -1 : a < b ? 1 : 0;
@@ -31,7 +24,7 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<div className="p-6">
+				<div className="p-6 block w-full">
 					<Responsive>
 						<Grid feed={this.props.feed} />
 					</Responsive>
