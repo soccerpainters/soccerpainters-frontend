@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const Marquee = styled.div`
 
-	${tw`block relative p-4`}
+	${tw`block relative p-4 uppercase`}
 
 	@keyframes scroll {
 		from { left: 100%; }

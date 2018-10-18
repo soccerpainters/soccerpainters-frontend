@@ -5,20 +5,20 @@ import { config } from "../config.js";
 import styled from "styled-components";
 import { media } from '../theme';
 import { createThumbnail } from '../helpers/cloudinary';
+import Image from '../global/Image';
 
 const Article = styled.article`
-	${tw` w-full p-4 `}
-	font-family: Helvetica;
-
-
+	${tw` w-full p-4 text-grey-darker `}
+	font-family: PT Sans;
 
 	${ media.md`
+		${tw` text-xl leading-normal `}
 		flex: 1;
 	`}
 `;
 
 const Aside = styled.aside`
-	${tw` text-center mt-20 px-4 `}
+	${tw` text-center mt-8 md:mt-20 px-4 `}
 
 	${ media.md`
 		flex: 1;
@@ -26,16 +26,18 @@ const Aside = styled.aside`
 	`}
 `;
 
-const Image = styled.img`
-	${tw`  `}
-	max-width: 100%;
-	max-height: 450px;
+const AltText = styled.span`
+	${tw` text-xs text-grey-darker `}
+	font-family: PT Sans;
 `;
 
-const AltText = styled.span`
-	${tw` text-xs `}
-	font-family: Helvetica;
+const TeamScore = styled.span`
+	${tw` uppercase text-xl mb-2 inline-block`};
 `;
+
+const Title = styled.h2`
+	${tw` my-4 text-black `}
+`
 
 
 /**
@@ -73,23 +75,24 @@ class MatchReport extends Component {
 		return (
 			<div className="md:flex md:flex-grow">
 				<Aside>
-					<Image src={createThumbnail(image, 500)} alt={this.props.matchReport.title} />
+					<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
 					<div className="m-4">
-						<span>{`${home_team} ${home_team_score}`}</span>
-						<br/>
-						<span>{`${away_team} ${away_team_score}`}</span>
-						<br/>
-						<br/>
+						<div className="mb-1">
+							<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
+							<br />
+							<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+						</div>
 						<AltText>MOTM: {man_of_the_match}</AltText>
-						<br/>
+						<br />
 						<AltText>Words by {author}</AltText>
 					</div>
 				</Aside>
-				<Article
-					dangerouslySetInnerHTML={{
+				<Article>
+					<Title>{this.props.matchReport.title.rendered}</Title>
+					<div dangerouslySetInnerHTML={{
 						__html: this.props.matchReport.content.rendered
-					}}
-				/>
+					}} />
+				</Article>
 
 			</div>
 		);

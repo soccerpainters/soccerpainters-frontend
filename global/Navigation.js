@@ -4,19 +4,21 @@ import Link from 'next/link';
 
 const MenuItem = styled.span`
 	a{
-		${tw` text-black no-underline relative inline-block `}
+		${tw` text-black no-underline relative inline-block uppercase `}
 
 		&:hover {
-			&::before {
-				content: '';
-				width: 100%;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				border-bottom: 2px solid ${ p => p.theme.colors.primary }; // blue
-				transform: skewY(-5deg);
-			}
-			text-decoration: line-through wavy ${ p => p.theme.colors.secondary }; //Pink
+			color: ${ p => p.theme.colors.secondary }
+
+			// &::before {
+			// 	content: '';
+			// 	width: 100%;
+			// 	position: absolute;
+			// 	right: 0;
+			// 	top: 50%;
+			// 	border-bottom: 2px solid ${ p => p.theme.colors.primary }; // blue
+			// 	transform: skewY(-5deg);
+			// }
+			// text-decoration: line-through wavy ${ p => p.theme.colors.secondary }; //Pink
 		}
 	}
 `;
