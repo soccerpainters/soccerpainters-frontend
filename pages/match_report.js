@@ -3,7 +3,8 @@ import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import { config } from "../config.js";
 import styled from "styled-components";
-import { media } from '../theme'
+import { media } from '../theme';
+import { createThumbnail } from '../helpers/cloudinary';
 
 const Article = styled.article`
 	${tw` w-full p-4 `}
@@ -17,10 +18,11 @@ const Article = styled.article`
 `;
 
 const Aside = styled.aside`
-	${tw` text-center mt-20 `}
+	${tw` text-center mt-20 px-4 `}
 
 	${ media.md`
 		flex: 1;
+		px-0;
 	`}
 `;
 
@@ -58,8 +60,6 @@ class MatchReport extends Component {
 	render () {
 		if (!this.props.matchReport.title) return <Error statusCode={404} />;
 
-		console.log(this.props.matchReport);
-
 		const {
 			author,
 			away_team,
@@ -73,7 +73,7 @@ class MatchReport extends Component {
 		return (
 			<div className="md:flex md:flex-grow">
 				<Aside>
-					<Image src={image} alt={this.props.matchReport.title} />
+					<Image src={createThumbnail(image, 500)} alt={this.props.matchReport.title} />
 					<div className="m-4">
 						<span>{`${home_team} ${home_team_score}`}</span>
 						<br/>

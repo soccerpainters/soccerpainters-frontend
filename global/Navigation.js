@@ -4,7 +4,20 @@ import Link from 'next/link';
 
 const MenuItem = styled.span`
 	a{
-		${tw` text-black no-underline `}
+		${tw` text-black no-underline relative inline-block `}
+
+		&:hover {
+			&::before {
+				content: '';
+				width: 100%;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				border-bottom: 2px solid ${ p => p.theme.colors.primary }; // blue
+				transform: skewY(-5deg);
+			}
+			text-decoration: line-through wavy ${ p => p.theme.colors.secondary }; //Pink
+		}
 	}
 `;
 
