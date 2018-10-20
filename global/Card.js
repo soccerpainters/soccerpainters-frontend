@@ -13,7 +13,7 @@ const Card = styled.div`
 	&:hover {
 		transform: scale(1.02);
 
-		${ media.md`		
+		${ media.lg`		
 			img {
 				filter: blur(2px);
 			}
@@ -24,7 +24,7 @@ const Card = styled.div`
 const Title= styled.span`
 	${tw` mt-3 text-xs uppercase text-black `}
 
-	${ media.md`
+	${ media.lg`
 		${tw` text-lg text-white `}
 	`}
 `;
@@ -41,7 +41,7 @@ const Overlay = styled.div`
 		opacity: 1;
 	}
 
-	${ media.md`
+	${ media.lg`
 		${tw` flex `}
 	`}
 `;
@@ -55,7 +55,7 @@ const CardComp = ({ feedItem }) => {
 			>
 				<a className="text-black inline-block relative no-underline">
 					<Image className="w-full" src={feedItem.acf.image} alt={feedItem.acf.image.title} />
-					<Title className="md:hidden">{feedItem.title.rendered}</Title>
+					<Title className="lg:hidden">{feedItem.title.rendered}</Title>
 					<Overlay>
 						<Title>{feedItem.title.rendered}</Title>
 					</Overlay>
