@@ -3,9 +3,7 @@ import React from "react";
 import App, { Container } from "next/app";
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components'
-import Layout from '../global/Layout';
 import theme from '../theme';
-import { Spring } from 'react-spring';
 import Favicon from '../global/Favicon';
 import Router from 'next/router';
 import NProgress from 'nprogress';
@@ -31,8 +29,6 @@ export default class MyApp extends App {
 
 		const menu = await getMainMenu();
 
-		const banner = await getNewsBanner();
-
 		if (Component.getInitialProps) {
 			pageProps = await Component.getInitialProps(ctx)
 		}
@@ -40,13 +36,12 @@ export default class MyApp extends App {
 		return {
 			router,
 			menu,
-			banner,
 			pageProps
 		};
 	}
 
 	render () {
-		const { Component, pageProps, menu, router, banner } = this.props;
+		const { Component, pageProps, menu, router } = this.props;
 
 		// Banner is only visible on Index page.
 		const hideBanner = router.asPath !== "/";
@@ -58,14 +53,7 @@ export default class MyApp extends App {
 					<Favicon />
 				</Head>
 				<ThemeProvider theme={theme}>
-					<Spring
-						from={{ opacity: 0 }}
-						to={{ opacity: 1 }}
-					>
-						{props => <Layout style={props} bannerText={banner} hideBanner={hideBanner} menu={menu}>
-							<Component {...pageProps} />
-						</Layout>}
-					</Spring>
+					<Component {...pageProps} />
 				</ThemeProvider>
 			</Container>
 		);

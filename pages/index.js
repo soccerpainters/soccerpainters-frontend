@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { getMatchReports, getArticles } from '../services/wordpress';
+import { getMatchReports, getArticles, getNewsBanner } from '../services/wordpress';
+import Layout from '../global/Layout';
 import Grid from '../global/Grid';
 import Responsive from '../global/Responsive';
+import Marquee from '../global/Marquee';
 
 class Index extends Component {
 
 	static async getInitialProps () {
 
-		const [ articles, matchReports ] = await Promise.all([getArticles(), getMatchReports()]);
+		const [articles, matchReports, banner] = await Promise.all([getArticles(), getMatchReports(), getNewsBanner()]);
 
 		// Merge and and sort by date to create feed
 		const feed = [...articles, ...matchReports].sort((a, b) => {
@@ -17,18 +19,22 @@ class Index extends Component {
 		});
 
 		return {
-			feed
+			feed,
+			banner
 		};
 	}
 
 	render () {
+		const bannerText = this.props.banner.title.rendered;
 		return (
 			<>
-				<div className="p-6 block w-full">
-					<Responsive>
-						<Grid feed={this.props.feed} />
-					</Responsive>
-				</div>
+				<Layout Footer={() => <Marquee text={bannerText} />}>
+					<div className="p-6 block w-full">
+						<Responsive>
+							<Grid feed={this.props.feed} />
+						</Responsive>
+					</div>
+				</Layout>
 			</>
 		)
 	}

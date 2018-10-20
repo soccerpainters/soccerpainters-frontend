@@ -6,29 +6,33 @@ import Marquee from './Marquee';
 import MediaQuery from 'react-responsive';
 import theme from '../tailwind';
 
-const Layout = ({ children, menu, hideBanner, bannerText }) => (
-	<div className="flex flex-col min-h-screen">
-		<header>
-			<PageEnd className="w-full fixed pin-t z-10 border-black border-solid border-b-4">
-				<MediaQuery maxWidth={theme.views.md -1}>
-					<MobileNavigation />
-				</MediaQuery>
-				<MediaQuery minWidth={theme.views.md}>
-					<Navigation menu={menu} />
-				</MediaQuery>
-			</PageEnd>
-		</header>
-		<div id="modal-root"></div>
-		<div className="flex flex-grow container mx-auto pb-12 mt-16">
-			{children}
-		</div>
-		<footer>
-			{!hideBanner &&
+const Layout = (props) => {
+
+	const { Footer, children, menu } = props;
+
+	return (
+		<div className="flex flex-col min-h-screen">
+			<header>
+				<PageEnd className="w-full fixed pin-t z-10 border-black border-solid border-b-4">
+					<MediaQuery maxWidth={theme.views.md - 1}>
+						<MobileNavigation />
+					</MediaQuery>
+					<MediaQuery minWidth={theme.views.md}>
+						<Navigation menu={menu} />
+					</MediaQuery>
+				</PageEnd>
+			</header>
+			<div id="modal-root"></div>
+			<div className="flex flex-grow container mx-auto pb-12 mt-16">
+				{children}
+			</div>
+			<footer>
 				<PageEnd className="w-full fixed pin-b z-10 border-black border-solid border-t-4">
-					<Marquee text={bannerText.title.rendered} />
-				</PageEnd>}
-		</footer>
-	</div>
-)
+					{(Footer) ? <Footer {...props} /> : null }
+				</PageEnd>
+			</footer>
+		</div>
+	)
+}
 
 export default Layout;

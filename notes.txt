@@ -2,12 +2,12 @@
 
 /**
 	TODO:
-
 	-	Page caching
 	-	// Loading bar when moving pages
-	-	Cloudinary url manipulation
+	-	// Cloudinary url manipulation
 	-	// Desktop Navigation strikethroughs
 	-	// Desktop Hover image overlay with title
+	-	// About Page footer
 	-	About page logo stickers
 	-	Add google analytics 
 	- 	Add Bugtracking software
