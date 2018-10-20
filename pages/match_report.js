@@ -4,15 +4,15 @@ import Error from "next/error";
 import { config } from "../config.js";
 import styled from "styled-components";
 import { media } from '../theme';
-import { createThumbnail } from '../helpers/cloudinary';
 import Image from '../global/Image';
+import Layout from '../global/Layout';
 
 const Article = styled.article`
 	${tw` w-full p-4 text-grey-darker `}
 	font-family: PT Sans;
 
 	${ media.md`
-		${tw` text-xl leading-normal `}
+		${tw` text-xl leading-tight `}
 		flex: 1;
 	`}
 `;
@@ -32,7 +32,12 @@ const AltText = styled.span`
 `;
 
 const TeamScore = styled.span`
-	${tw` uppercase text-xl mb-2 inline-block`};
+	
+	${tw` uppercase text-lg mb-2 inline-block`};
+	
+	${ media.md`
+		${tw` text-xl `}
+	`}
 `;
 
 const Title = styled.h2`
@@ -73,28 +78,32 @@ class MatchReport extends Component {
 		} = this.props.matchReport.acf;
 
 		return (
-			<div className="md:flex md:flex-grow">
-				<Aside>
-					<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
-					<div className="m-4">
-						<div className="mb-1">
-							<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
-							<br />
-							<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+			<Layout>
+				<div className="md:flex md:flex-grow mt-6">
+					<Aside>
+						<div className="mx-6 md:mx-0">
+							<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
 						</div>
-						<AltText>MOTM: {man_of_the_match}</AltText>
-						<br />
-						<AltText>Words by {author}</AltText>
-					</div>
-				</Aside>
-				<Article>
-					<Title>{this.props.matchReport.title.rendered}</Title>
-					<div dangerouslySetInnerHTML={{
-						__html: this.props.matchReport.content.rendered
-					}} />
-				</Article>
+						<div className="m-4">
+							<div className="mb-1">
+								<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
+								<br />
+								<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+							</div>
+							<AltText>MOTM: {man_of_the_match}</AltText>
+							<br />
+							<AltText>Words by {author}</AltText>
+						</div>
+					</Aside>
+					<Article>
+						<Title>{this.props.matchReport.title.rendered}</Title>
+						<div dangerouslySetInnerHTML={{
+							__html: this.props.matchReport.content.rendered
+						}} />
+					</Article>
 
-			</div>
+				</div>
+			</Layout>
 		);
 	}
 }

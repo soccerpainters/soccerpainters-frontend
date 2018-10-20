@@ -30,7 +30,7 @@ class AboutComp extends Component {
 			<Layout Footer={ () =>
 				<div className="flex justify-between p-4">
 					<span><a href="https://twitter.com/SoccerPainters" className="text-black no-underline">Twitter</a></span>
-					<span><a href="https://www.instagram.com/soccerpainters/" className="text-black no-underline">Instgram</a></span>
+					<span><a href="https://www.instagram.com/soccerpainters/" className="text-black no-underline">Instagram</a></span>
 				</div>
 			}>
 				<About>

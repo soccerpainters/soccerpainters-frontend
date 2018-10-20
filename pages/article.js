@@ -4,8 +4,8 @@ import Error from "next/error";
 import { config } from "../config.js";
 import styled from "styled-components";
 import { media } from '../theme';
-import { createThumbnail } from '../helpers/cloudinary';
 import Image from '../global/Image';
+import Layout from '../global/Layout';
 
 const Article = styled.article`
 	${tw` md:w-1/2 m-auto p-4 text-grey-darker `}
@@ -25,7 +25,7 @@ const Aside = styled.aside`
 	}
 
 	${ media.md`
-		${tw` mt-8 mt-20 px-4 `}
+		${tw` mt-8 mt-10 px-4 `}
 		flex: 1;
 		px-0;
 	`}
@@ -69,22 +69,24 @@ class ArticleComp extends Component {
 		} = this.props.article.acf;
 
 		return (
-			<div>
-				<Aside>
-					<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.article.title.rendered} />
-					<div className="m-4 md:mx-auto md:w-1/2">
-						<Title>{this.props.article.title.rendered}</Title>
-						<br/>
-						<AltText>Words by {author}</AltText>
-					</div>
-				</Aside>
-				<Article
-					dangerouslySetInnerHTML={{
-						__html: this.props.article.content.rendered
-					}}
-				/>
+			<Layout>
+				<div>
+					<Aside>
+						<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.article.title.rendered} />
+						<div className="m-4 md:mx-auto md:w-1/2">
+							<Title>{this.props.article.title.rendered}</Title>
+							<br />
+							<AltText>Words by {author}</AltText>
+						</div>
+					</Aside>
+					<Article
+						dangerouslySetInnerHTML={{
+							__html: this.props.article.content.rendered
+						}}
+					/>
 
-			</div>
+				</div>
+			</Layout>
 		);
 	}
 }

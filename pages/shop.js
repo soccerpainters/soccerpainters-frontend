@@ -12,7 +12,7 @@ class Shop extends Component {
 		return (
 			<Layout>
 				<CenterScreen className="py-16">
-					<span className="text-2xl">Coming soon...</span>
+					<span className="text-2xl uppercase">Coming soon</span>
 				</CenterScreen>
 			</Layout>
 		)

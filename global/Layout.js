@@ -27,7 +27,7 @@ const Layout = (props) => {
 				{children}
 			</div>
 			<footer>
-				<PageEnd className="w-full fixed pin-b z-10 border-black border-solid border-t-4">
+				<PageEnd className="w-full fixed pin-b z-10 border-black border-solid border-t-4 uppercase">
 					{(Footer) ? <Footer {...props} /> : null }
 				</PageEnd>
 			</footer>

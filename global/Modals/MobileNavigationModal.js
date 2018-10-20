@@ -20,9 +20,9 @@ const ModalComp = props => {
 				<div className="absolute pin-t mt-4">
 					<button onClick={props.onClick}><img className="h-8 w-18" src={IconClose} alt="Close" /></button>
 				</div>
-				<Link href="/"><a onClick={props.onClick}>Home</a></Link>
-				<Link href="/about"><a onClick={props.onClick}>About</a></Link>
-				<Link href="/shop"><a onClick={props.onClick}>Shop</a></Link>
+				<Link href="/"><a className="uppercase text-lg" onClick={props.onClick}>Home</a></Link>
+				<Link href="/about"><a className="uppercase text-lg" onClick={props.onClick}>About</a></Link>
+				<Link href="/shop"><a className="uppercase text-lg" onClick={props.onClick}>Shop</a></Link>
 			</Modal>
 		</ModalPortal>
 	)
