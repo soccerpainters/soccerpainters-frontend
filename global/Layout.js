@@ -26,11 +26,12 @@ const Layout = (props) => {
 			<div className="flex flex-grow container mx-auto pb-12 mt-16">
 				{children}
 			</div>
-			<footer>
+
+			{Footer && <footer>
 				<PageEnd className="w-full fixed pin-b z-10 border-black border-solid border-t-4 uppercase">
-					{(Footer) ? <Footer {...props} /> : null }
+					<Footer {...props} />
 				</PageEnd>
-			</footer>
+			</footer>}
 		</div>
 	)
 }
