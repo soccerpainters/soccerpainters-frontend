@@ -26,6 +26,7 @@ export default class Grid extends Component {
 					gutterWidth={50}
 					gutterHeight={50}
 					monitorImagesLoaded={true}
+					enableSSR={true}
 				>
 					{
 						this.props.feed.map(feedItem => {
