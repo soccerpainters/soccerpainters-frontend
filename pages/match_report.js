@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Error from "next/error";
-import { config } from "../config.js";
+import getConfig from 'next/config';
 import styled from "styled-components";
 import { media } from '../theme';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
+
+const { publicRuntimeConfig: config } = getConfig();
 
 const Article = styled.article`
 	${tw` w-full p-4 text-grey-darker `}
@@ -56,7 +58,7 @@ class MatchReport extends Component {
 
 		// Fetch the relevant match report
 		const res = await fetch(
-			`${config.apiUrl}/wp-json/wp/v2/match_report?slug=${slug}`
+			`${config.wordpressUrl}/wp-json/wp/v2/match_report?slug=${slug}`
 		);
 		const matchReport = await res.json();
 

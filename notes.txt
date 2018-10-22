@@ -11,4 +11,5 @@
 	-	About page logo stickers
 	-	Add google analytics 
 	- 	Add Bugtracking software
+	-	Move Article and Match Report fetch logic to Wordpress Api file
 */

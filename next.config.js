@@ -1,3 +1,10 @@
+
+if (process.env.NODE_ENV !== "production") {
+	require('dotenv').config();
+} else {
+	require('dotenv').config({ path: './.env.production' });
+}
+
 const path = require('path');
 const glob = require('glob-all');
 
@@ -39,5 +46,12 @@ module.exports = withCSS(withFonts(withImages({
 
 
 		return config;
+	},
+	serverRuntimeConfig: { 
+		wordpressUrl: process.env.WORDPRESS_URL
+	},
+	publicRuntimeConfig: {
+		staticFolder: '/static',
+		wordpressUrl: process.env.WORDPRESS_URL
 	}
 })));
