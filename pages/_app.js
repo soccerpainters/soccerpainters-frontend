@@ -3,6 +3,7 @@ import React from "react";
 import App, { Container } from "next/app";
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components'
+import server from '../helpers/server';
 import theme from '../theme';
 import Favicon from '../global/Favicon';
 import Router from 'next/router';
@@ -20,28 +21,29 @@ Router.events.on('routeChangeError', () => {
 	NProgress.done();
 });
 
-import { getMainMenu, getNewsBanner } from '../services/wordpress';
+import { getMainMenu } from '../services/wordpress';
 
 export default class MyApp extends App {
 
-	static async getInitialProps ({ Component, router, ctx }) {
+	static async getInitialProps ({ Component, router, ctx: context }) {
 		let pageProps = {}
 
 		const menu = await getMainMenu();
 
 		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps(ctx)
+			pageProps = await Component.getInitialProps(context)
 		}
 
 		return {
 			router,
 			menu,
-			pageProps
+			pageProps,
+			server: server(context)
 		};
 	}
 
 	render () {
-		const { Component, pageProps, menu, router } = this.props;
+		const { Component, pageProps, router, server } = this.props;
 
 		// Banner is only visible on Index page.
 		const hideBanner = router.asPath !== "/";
@@ -53,7 +55,7 @@ export default class MyApp extends App {
 					<Favicon />
 				</Head>
 				<ThemeProvider theme={theme}>
-					<Component {...pageProps} />
+					<Component server={server} {...pageProps} />
 				</ThemeProvider>
 			</Container>
 		);

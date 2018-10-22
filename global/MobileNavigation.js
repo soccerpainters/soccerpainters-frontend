@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Spring } from 'react-spring';
 import dynamic from 'next/dynamic';
 import IconOpen from '../assets/images/icon-open.svg';
-
-const Modal =  dynamic(() => import('./Modals/MobileNavigationModal'), {
-	ssr: false,
-	loading: () => null
-});
+import Modal from './Modals/MobileNavigationModal';
+// const Modal =  dynamic(() => import('./Modals/MobileNavigationModal'), {
+// 	ssr: false,
+// 	loading: () => <div></div>
+// });
 
 export default class MobileNavigation extends Component {
 
@@ -27,7 +27,7 @@ export default class MobileNavigation extends Component {
 
 	render () {
 		return (
-			<div className="bg-white">
+			<nav className="bg-white">
 				<div className="flex justify-center my-2">
 					<button onClick={this.handleModalClick}><img className="h-12 w-12" src={IconOpen} alt="Menu" /></button>
 				</div>
@@ -39,8 +39,7 @@ export default class MobileNavigation extends Component {
 						<Modal style={props} isModalOpen={this.state.isModalOpen} onClick={this.handleModalClick} />
 					}
 				</Spring>
-
-			</div>
+			</nav>
 		)
 	}
 }
