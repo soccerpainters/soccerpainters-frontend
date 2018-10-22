@@ -5,7 +5,8 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components'
 import NProgress from 'nprogress';
 import LogRocket from 'logrocket';
-import Router from 'next/router';
+import Router from "next/router";
+import withGA from "next-ga";
 import getConfig from 'next/config';
 import server from '../helpers/server';
 import theme from '../theme';
@@ -32,7 +33,7 @@ Router.events.on('routeChangeError', () => {
 
 import { getMainMenu } from '../services/wordpress';
 
-export default class MyApp extends App {
+class MyApp extends App {
 
 	static async getInitialProps ({ Component, router, ctx: context }) {
 		let pageProps = {}
@@ -67,3 +68,5 @@ export default class MyApp extends App {
 		);
 	}
 }
+
+export default withGA("UA-127933190-1", Router)(MyApp);
