@@ -3,11 +3,20 @@ import React from "react";
 import App, { Container } from "next/app";
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components'
+import NProgress from 'nprogress';
+import LogRocket from 'logrocket';
+import Router from 'next/router';
+import getConfig from 'next/config';
 import server from '../helpers/server';
 import theme from '../theme';
 import Favicon from '../global/Favicon';
-import Router from 'next/router';
-import NProgress from 'nprogress';
+
+const { publicRuntimeConfig: config } = getConfig();
+
+
+if (config.isProduction) {
+	LogRocket.init(config.logrocket);
+}
 
 Router.events.on('routeChangeStart', () => {
 	NProgress.start();
@@ -44,9 +53,6 @@ export default class MyApp extends App {
 
 	render () {
 		const { Component, pageProps, router, server } = this.props;
-
-		// Banner is only visible on Index page.
-		const hideBanner = router.asPath !== "/";
 
 		return (
 			<Container>

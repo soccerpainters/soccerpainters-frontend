@@ -1,4 +1,6 @@
 
+/* Load in correct config.
+---------------------------------------------------- */
 if (process.env.NODE_ENV !== "production") {
 	require('dotenv').config();
 } else {
@@ -22,6 +24,9 @@ class TailwindExtractor {
 }
 
 module.exports = withCSS(withFonts(withImages({
+
+	/* WEBPACK CONFIGURATION
+	---------------------------------------------------- */
 	webpack (config, { buildId, dev, isServer, defaultLoaders }) {
 
 		// Plugins
@@ -34,9 +39,6 @@ module.exports = withCSS(withFonts(withImages({
 				extractors: [
 					{
 						extractor: TailwindExtractor,
-
-						// Specify the file extensions to include when scanning for
-						// class names.
 						extensions: ["js"]
 					}
 				],
@@ -47,11 +49,16 @@ module.exports = withCSS(withFonts(withImages({
 
 		return config;
 	},
+
+	/* BUILD CONFIGURATION
+	---------------------------------------------------- */
 	serverRuntimeConfig: { 
 		wordpressUrl: process.env.WORDPRESS_URL
 	},
 	publicRuntimeConfig: {
 		staticFolder: '/static',
-		wordpressUrl: process.env.WORDPRESS_URL
+		wordpressUrl: process.env.WORDPRESS_URL,
+		isProduction: (process.env.NODE_ENV === "production"),
+		logrocket: process.env.LOGROCKET
 	}
 })));
