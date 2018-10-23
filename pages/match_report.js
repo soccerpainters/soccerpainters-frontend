@@ -42,7 +42,7 @@ const TeamScore = styled.span`
 	`}
 `;
 
-const Title = styled.h2`
+const Intro = styled.h2`
 	${tw` my-4 text-black `}
 `
 
@@ -70,6 +70,7 @@ class MatchReport extends Component {
 		if (!this.props.matchReport.title) return <Error statusCode={404} />;
 
 		const {
+			intro,
 			author,
 			away_team,
 			away_team_score,
@@ -98,7 +99,7 @@ class MatchReport extends Component {
 						</div>
 					</Aside>
 					<Article>
-						<Title>{this.props.matchReport.title.rendered}</Title>
+						<Intro>{intro}</Intro>
 						<div dangerouslySetInnerHTML={{
 							__html: this.props.matchReport.content.rendered
 						}} />

@@ -36,12 +36,16 @@ class AboutComp extends Component {
 				<About>
 					<div>
 						<div className="relative">
-							<div className="hidden md:inline-block absolute pin-r z-10"><Image size="100" src={Pink} alt="Logo-Pink" /></div>
-							<p className="md:text-center md:text-xl md:leading-loose z-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ex ea difficultate illae fallaciloquae, ut ait Accius, malitiae natae sunt. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Addo etiam illud, multa iam mihi dare signa puerum et pudoris et ingenii, sed aetatem vides. Legimus tamen Diogenem, Antipatrum, Mnesarchum, Panaetium, multos alios in primisque familiarem nostrum Posidonium. Duo Reges: constructio interrete. Idemne potest esse dies saepius, qui semel fuit? In quibus doctissimi illi veteres inesse quiddam caeleste et divinum putaverunt. Quae quidem vel cum periculo est quaerenda vobis; Ita similis erit ei finis boni, atque antea fuerat, neque idem tamen;</p>
+							<p className="md:text-center md:text-xl md:leading-loose z-20">
+								Soccer Painters began life as a amateur football team, established by graduates of the University of the Arts London in 2017. 
+								As well as spraying balls on at the weekend, we are building a community of footballing creatives (team of 10s).
+								Our aim is to collaborate and create using music, journalism, apparel and photography to explore the love of the beautiful game. 
+								Don’t hesitate to get in contact if you’d be interested in working with us or can produce ‘unbelievable tekkers’ on Sunday mornings.
+							</p>
 						</div>
-						<div className="flex">
+						<div className="flex justify-between">
 							<div><Image size="75" src={Blue} alt="Logo-Blue" /></div>
-							<div className="md:hidden"><Image size="100" src={Pink} alt="Logo-Pink" /></div>
+							<div><Image size="100" src={Pink} alt="Logo-Pink" /></div>
 						</div>
 						
 					</div>
