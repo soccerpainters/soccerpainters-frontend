@@ -36,7 +36,7 @@ class AboutComp extends Component {
 				<About>
 					<div>
 						<div className="relative">
-							<p className="md:text-center md:text-xl md:leading-loose z-20">
+							<p className="md:text-center md:text-xl md:leading-loose z-20 uppercase">
 								Soccer Painters began life as a amateur football team, established by graduates of the University of the Arts London in 2017. 
 								As well as spraying balls on at the weekend, we are building a community of footballing creatives (team of 10s).
 								Our aim is to collaborate and create using music, journalism, apparel and photography to explore the love of the beautiful game. 

@@ -57,6 +57,7 @@ module.exports = withCSS(withFonts(withImages({
 	},
 	publicRuntimeConfig: {
 		staticFolder: '/static',
+		appUrl: process.env.APP_URL,
 		wordpressUrl: process.env.WORDPRESS_URL,
 		isProduction: (process.env.NODE_ENV === "production"),
 		logrocket: process.env.LOGROCKET

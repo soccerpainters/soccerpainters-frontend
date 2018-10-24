@@ -5,7 +5,7 @@ import Image from "./Image";
 import { media } from '../theme';
 
 const Card = styled.div`
-	${tw` justify-center text-center `}
+	${tw` justify-center text-center px-4 `}
 
 	transition: all .2s ease-in-out;
 
