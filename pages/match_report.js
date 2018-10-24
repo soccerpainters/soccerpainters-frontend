@@ -86,10 +86,8 @@ class MatchReport extends Component {
 		);
 		const matchReport = await res.json();
 
-		const { originalUrl } = context.req || {}
-
 		// Attach to props. If not found, return empty array for error.
-		return { matchReport: (matchReport[0]) ? matchReport[0] : [], slug, originalUrl };
+		return { matchReport: (matchReport[0]) ? matchReport[0] : [], slug };
 	}
 
 	render () {
@@ -106,7 +104,7 @@ class MatchReport extends Component {
 			man_of_the_match
 		} = this.props.matchReport.acf;
 
-		const url = `${config.appUrl}/${this.props.originalUrl}`;
+		const url = `${config.appUrl}/match_report/${this.props.slug}`;
 
 		return (
 			<Layout>

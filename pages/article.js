@@ -75,7 +75,7 @@ class ArticleComp extends Component {
 		const { originalUrl } = context.req || {}
 
 		// Attach to props. If not found, return empty array for error.
-		return { article: (article[0]) ? article[0] : [], slug, originalUrl };
+		return { article: (article[0]) ? article[0] : [], slug };
 	}
 
 	render () {
@@ -83,7 +83,7 @@ class ArticleComp extends Component {
 
 		const title = this.props.article.title.rendered;
 
-		const url = `${config.appUrl}/${this.props.originalUrl}`;
+		const url = `${config.appUrl}/article/${this.props.slug}`;
 
 		const {
 			author,
