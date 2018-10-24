@@ -9,7 +9,6 @@ const Card = styled.div`
 
 	transition: all .2s ease-in-out;
 
-
 	&:hover {
 		transform: scale(1.02);
 
@@ -21,7 +20,7 @@ const Card = styled.div`
 	}
 `;
 
-const Title= styled.span`
+const Title = styled.span`
 	${tw` mt-3 text-xs uppercase text-black `}
 
 	${ media.lg`
@@ -37,7 +36,6 @@ const Overlay = styled.div`
 	background-color: rgba(0, 0, 0, 0.5);
 
 	&:hover {
-		${tw` `}
 		opacity: 1;
 	}
 
@@ -54,7 +52,7 @@ const CardComp = ({ feedItem }) => {
 				href={`/${feedItem.type}?slug=${feedItem.slug}&apiRoute=${feedItem.type}`}
 			>
 				<a className="text-black inline-block relative no-underline">
-					<Image className="w-full" src={feedItem.acf.image} alt={feedItem.acf.image.title} />
+					<Image className="w-full mb-2" src={feedItem.acf.image} alt={feedItem.acf.image.title} />
 					<Title className="lg:hidden">{feedItem.title.rendered}</Title>
 					<Overlay>
 						<Title>{feedItem.title.rendered}</Title>

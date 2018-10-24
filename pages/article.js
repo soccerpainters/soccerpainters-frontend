@@ -20,7 +20,7 @@ const Article = styled.article`
 	font-family: PT Sans;
 
 	${ media.md`
-		${tw` text-xl leading-normal `}
+		${tw` text-xl leading-normal mt-2 `}
 		flex: 1;
 	`}
 `;
@@ -40,7 +40,7 @@ const Aside = styled.aside`
 `;
 
 const AltText = styled.span`
-	${tw` text-xs text-grey-darker `}
+	${tw` text-sm text-grey-darker `}
 	font-family: PT Sans;
 `;
 
@@ -52,7 +52,7 @@ const Box = styled.div`
 	${tw` flex justify-center `}
 
 	div {
-		${tw` mx-2 `}
+		${tw` mx-1/2 `}
 	}
 `
 
@@ -85,8 +85,6 @@ class ArticleComp extends Component {
 
 		const url = `${config.appUrl}/${this.props.originalUrl}`;
 
-		console.log(url);
-
 		const {
 			author,
 			image
@@ -102,28 +100,28 @@ class ArticleComp extends Component {
 							<br />
 							<AltText>Words by {author}</AltText>
 						</div>
+						<Box className="flex justify-center">
+							<FacebookShareButton
+								url={url}
+								quote={title}
+								hashtag="SoccerPainters"
+							>
+								<FacebookIcon size={32} round={true} />
+							</FacebookShareButton>
+							<TwitterShareButton
+								url={url}
+								title={title}
+								hashtags={["SoccerPainters"]}
+							>
+								<TwitterIcon size={32} round={true} />
+							</TwitterShareButton>
+						</Box>
 					</Aside>
 					<Article
 						dangerouslySetInnerHTML={{
 							__html: this.props.article.content.rendered
 						}}
 					/>
-					<Box className="flex justify-center">
-						<FacebookShareButton
-							url={url}
-							quote={title}
-							hashtag="SoccerPainters"
-						>
-							<FacebookIcon size={32} round={true} />
-						</FacebookShareButton>
-						<TwitterShareButton
-							url={url}
-							title={title}
-							hashtags={["SoccerPainters"]}
-						>
-							<TwitterIcon size={32} round={true} />
-						</TwitterShareButton>
-					</Box>
 				</div>
 			</Layout>
 		);

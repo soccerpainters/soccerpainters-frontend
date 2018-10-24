@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import lazyestload from "../assets/js/lazyestload";
 import styled from "styled-components";
 import { createThumbnail } from '../helpers/cloudinary';
+import { media } from '../theme';
 
 const Image = styled.img`
 
+	${ media.md`
+		${tw` mb-0 `}
+	`}
 `;
 
 class ImageComp extends Component {

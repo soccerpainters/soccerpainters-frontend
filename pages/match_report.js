@@ -6,6 +6,12 @@ import styled from "styled-components";
 import { media } from '../theme';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
+import {
+	FacebookShareButton,
+	FacebookIcon,
+	TwitterShareButton,
+	TwitterIcon
+} from 'react-share';
 
 const { publicRuntimeConfig: config } = getConfig();
 
@@ -43,7 +49,7 @@ const Intro = styled.h2`
 	${tw` mb-4 mt-6 `}
 	font-family: PT Sans;
 	${ media.md`
-		${tw` mt-8 `}
+		${tw` mt-6 `}
 	`}
 `
 
@@ -55,6 +61,14 @@ const Content = styled.div`
 		${tw` text-xl leading-tight `}
 	`}
 `;
+
+const Box = styled.div`
+	${tw` flex justify-center mt-4 `}
+
+	div {
+		${tw` mx-1/2 `}
+	}
+`
 
 
 /**
@@ -72,8 +86,10 @@ class MatchReport extends Component {
 		);
 		const matchReport = await res.json();
 
+		const { originalUrl } = context.req || {}
+
 		// Attach to props. If not found, return empty array for error.
-		return { matchReport: (matchReport[0]) ? matchReport[0] : [] };
+		return { matchReport: (matchReport[0]) ? matchReport[0] : [], slug, originalUrl };
 	}
 
 	render () {
@@ -90,6 +106,8 @@ class MatchReport extends Component {
 			man_of_the_match
 		} = this.props.matchReport.acf;
 
+		const url = `${config.appUrl}/${this.props.originalUrl}`;
+
 		return (
 			<Layout>
 				<div className="md:flex md:flex-grow mt-6">
@@ -100,17 +118,33 @@ class MatchReport extends Component {
 					</Aside>
 					<Article>
 						<div>
-							<div className="text-center md:text-left">
+							<div className="text-center">
 								<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
 								<br />
 								<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
 							</div>
-							<div className="text-center md:text-left">
+							<div className="text-center">
 								<AltText>MOTM: {man_of_the_match}</AltText>
 								<br />
 								<AltText>Words by {author}</AltText>
 							</div>
 						</div>
+						<Box className="flex justify-center">
+							<FacebookShareButton
+								url={url}
+								quote={intro}
+								hashtag="SoccerPainters"
+							>
+								<FacebookIcon size={32} round={true} />
+							</FacebookShareButton>
+							<TwitterShareButton
+								url={url}
+								title={intro}
+								hashtags={["SoccerPainters"]}
+							>
+								<TwitterIcon size={32} round={true} />
+							</TwitterShareButton>
+						</Box>
 						<Intro>{intro}</Intro>
 						<Content dangerouslySetInnerHTML={{
 							__html: this.props.matchReport.content.rendered
