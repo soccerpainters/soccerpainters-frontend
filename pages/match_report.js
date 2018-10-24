@@ -10,41 +10,51 @@ import Layout from '../global/Layout';
 const { publicRuntimeConfig: config } = getConfig();
 
 const Article = styled.article`
-	${tw` w-full p-4 text-grey-darker `}
-	font-family: PT Sans;
+	${tw` w-full p-4 `}
 
 	${ media.md`
-		${tw` text-xl leading-tight `}
 		flex: 1;
 	`}
 `;
 
 const Aside = styled.aside`
-	${tw` text-center mt-8 md:mt-20 px-4 `}
+	${tw` text-center mt-4 md:mt-20 px-4 `}
 
 	${ media.md`
+		${tw` mt-8 `}
 		flex: 1;
-		px-0;
 	`}
 `;
 
 const AltText = styled.span`
-	${tw` text-xs text-grey-darker `}
+	${tw` text-sm inline-block mb-1/2 text-grey-darker leading-none`}
 	font-family: PT Sans;
 `;
 
 const TeamScore = styled.span`
-	
 	${tw` uppercase text-lg mb-2 inline-block`};
 	
 	${ media.md`
-		${tw` text-xl `}
+		${tw` text-2xl `}
 	`}
 `;
 
 const Intro = styled.h2`
-	${tw` my-4 text-black `}
+	${tw` mb-4 mt-6 `}
+	font-family: PT Sans;
+	${ media.md`
+		${tw` mt-8 `}
+	`}
 `
+
+const Content = styled.div`
+	${tw` text-grey-darker `}
+	font-family: PT Sans;
+
+	${ media.md`
+		${tw` text-xl leading-tight `}
+	`}
+`;
 
 
 /**
@@ -87,20 +97,22 @@ class MatchReport extends Component {
 						<div className="mx-6 md:mx-0">
 							<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
 						</div>
-						<div className="m-4">
-							<div className="mb-1">
+					</Aside>
+					<Article>
+						<div>
+							<div className="text-center md:text-left">
 								<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
 								<br />
 								<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
 							</div>
-							<AltText>MOTM: {man_of_the_match}</AltText>
-							<br />
-							<AltText>Words by {author}</AltText>
+							<div className="text-center md:text-left">
+								<AltText>MOTM: {man_of_the_match}</AltText>
+								<br />
+								<AltText>Words by {author}</AltText>
+							</div>
 						</div>
-					</Aside>
-					<Article>
 						<Intro>{intro}</Intro>
-						<div dangerouslySetInnerHTML={{
+						<Content dangerouslySetInnerHTML={{
 							__html: this.props.matchReport.content.rendered
 						}} />
 					</Article>
