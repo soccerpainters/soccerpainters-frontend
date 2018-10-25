@@ -31,14 +31,10 @@ Router.events.on('routeChangeError', () => {
 	NProgress.done();
 });
 
-import { getMainMenu } from '../services/wordpress';
-
 class MyApp extends App {
 
 	static async getInitialProps ({ Component, router, ctx: context }) {
 		let pageProps = {}
-
-		const menu = await getMainMenu();
 
 		if (Component.getInitialProps) {
 			pageProps = await Component.getInitialProps(context)
@@ -46,7 +42,6 @@ class MyApp extends App {
 
 		return {
 			router,
-			menu,
 			pageProps,
 			server: server(context)
 		};

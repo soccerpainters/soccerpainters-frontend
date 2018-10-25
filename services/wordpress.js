@@ -14,30 +14,51 @@ export const getMainMenu = async () => {
 export const getPosts = async () => {
 	const postsResponse = await fetch(
 		`${config.wordpressUrl}/wp-json/wp/v2/posts`
-	)
-	const posts = await postsResponse.json();
-	return posts;
+	).then(res => {
+		return res.json();
+	}).catch(err => {
+		console.error(err);
+		return [];
+	})
+	return postsResponse;
 }
 
 export const getNewsBanner = async () => {
 	const newsBannerResponse = await fetch(
 		`${config.wordpressUrl}/wp-json/wp/v2/banner`
-	)
-	const newsBanner = await newsBannerResponse.json()
-
-	return newsBanner[0];
+	).then(res => {
+		return res.json();
+	}).catch((err) => {
+		console.error(err);
+		return [{
+			title: {
+				rendered: "Soccer Painters Banner"
+			}
+		}]
+	});
+	return newsBannerResponse[0];
 }
 
 export const getMatchReports = async () => {
 	const matchReportsResponse = await fetch(
 		`${config.wordpressUrl}/wp-json/wp/v2/match_report?_embed`
-	);
-	return matchReportsResponse.json();
+	).then(res => {
+		return res.json();
+	}).catch(err => {
+		console.error(err);
+		return [];
+	})
+	return matchReportsResponse;
 }
 
 export const getArticles = async () => {
 	const articlesResponse = await fetch(
 		`${config.wordpressUrl}/wp-json/wp/v2/article?_embed`
-	)
-	return articlesResponse.json();
+	).then(res => {
+		return res.json();
+	}).catch(err => {
+		console.error(err);
+		return [];
+	});
+	return articlesResponse;
 }

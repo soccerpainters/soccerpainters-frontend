@@ -19,6 +19,9 @@ export default class Grid extends Component {
 	}
 
 	render () {
+
+		if (this.props.feed.length === 0) return <div className="text-center uppercase"><p>No posts yet.</p></div>;
+
 		return (
 			<>
 				<StackGrid
