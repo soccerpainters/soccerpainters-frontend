@@ -15,7 +15,7 @@ const Marquee = styled.div`
 		to { left: -200%; }
 	}
 
-	animation: scroll 10s linear infinite;
+	animation: scroll 15s linear infinite;
 
 	
 	${media.sm`
@@ -42,7 +42,9 @@ const Marquee = styled.div`
 const MarqueeComp = (props) => (
 	<Container>
 		<Marquee>
-			<h3 className="whitespace-no-wrap">{props.text}</h3>
+			<h3 className="whitespace-no-wrap" dangerouslySetInnerHTML={{
+				__html: props.text
+			}} />
 		</Marquee>
 	</Container>
 )

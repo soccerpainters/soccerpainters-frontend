@@ -25,7 +25,7 @@ class Index extends Component {
 	}
 
 	render () {
-		const bannerText = this.props.banner.title.rendered;
+		const bannerText = this.props.banner.content.rendered;
 		return (
 			<>
 				<Layout Footer={() => <Marquee text={bannerText} />}>
