@@ -51,6 +51,18 @@ export const getMatchReports = async () => {
 	return matchReportsResponse;
 }
 
+export const getMatchReportBySlug = async (slug) => {
+	const matchReportBySlug = await fetch(
+		`${config.wordpressUrl}/wp-json/wp/v2/match_report?slug=${slug}`
+	).then(res => {
+		return res.json();
+	}).catch(err => {
+		console.error(err);
+		return [];
+	})
+	return matchReportBySlug;
+}
+
 export const getArticles = async () => {
 	const articlesResponse = await fetch(
 		`${config.wordpressUrl}/wp-json/wp/v2/article?_embed`

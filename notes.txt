@@ -8,8 +8,14 @@
 	-	// Desktop Navigation strikethroughs
 	-	// Desktop Hover image overlay with title
 	-	// About Page footer
-	-	About page logo stickers
-	-	Add google analytics 
+	-	// About page logo stickers
+	-	// Add google analytics 
 	- 	Add Bugtracking software
+	-	Remove loading circle
+	- 	Fix poster when scrolling on Match reports
+	-	New Favicon
+	-	Facebook Share Button
+
+	REFACTOR:
 	-	Move Article and Match Report fetch logic to Wordpress Api file
 */

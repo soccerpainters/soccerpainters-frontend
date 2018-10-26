@@ -3,7 +3,10 @@ import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import getConfig from 'next/config';
 import styled from "styled-components";
+import Sticky from 'react-stickynode';
+import { SizeMe } from 'react-sizeme';
 import { media } from '../theme';
+import theme from '../tailwind';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
 import {
@@ -12,6 +15,7 @@ import {
 	TwitterShareButton,
 	TwitterIcon
 } from 'react-share';
+import { getMatchReportBySlug } from "../services/wordpress";
 
 const { publicRuntimeConfig: config } = getConfig();
 
@@ -27,8 +31,13 @@ const Aside = styled.aside`
 	${tw` text-center mt-4 md:mt-20 px-4 `}
 
 	${ media.md`
-		${tw` mt-8 `}
+		${tw` mt-8 relative `}
 		flex: 1;
+
+		div  {
+	
+		}
+
 	`}
 `;
 
@@ -81,16 +90,14 @@ class MatchReport extends Component {
 		const { slug } = context.query;
 
 		// Fetch the relevant match report
-		const res = await fetch(
-			`${config.wordpressUrl}/wp-json/wp/v2/match_report?slug=${slug}`
-		);
-		const matchReport = await res.json();
+		const matchReport = await getMatchReportBySlug(slug);
 
 		// Attach to props. If not found, return empty array for error.
 		return { matchReport: (matchReport[0]) ? matchReport[0] : [], slug };
 	}
 
 	render () {
+		console.log(this.props.matchReport);
 		if (!this.props.matchReport.title) return <Error statusCode={404} />;
 
 		const {
@@ -107,50 +114,56 @@ class MatchReport extends Component {
 		const url = `${config.appUrl}/match_report/${this.props.slug}`;
 
 		return (
-			<Layout>
-				<div className="md:flex md:flex-grow mt-6">
-					<Aside>
-						<div className="mx-6 md:mx-0">
-							<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
-						</div>
-					</Aside>
-					<Article>
-						<div>
-							<div className="text-center">
-								<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
-								<br />
-								<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
-							</div>
-							<div className="text-center">
-								<AltText>MOTM: {man_of_the_match}</AltText>
-								<br />
-								<AltText>Words by {author}</AltText>
-							</div>
-						</div>
-						<Box className="flex justify-center">
-							<FacebookShareButton
-								url={url}
-								quote={intro}
-								hashtag="SoccerPainters"
-							>
-								<FacebookIcon size={32} round={true} />
-							</FacebookShareButton>
-							<TwitterShareButton
-								url={url}
-								title={intro}
-								hashtags={["SoccerPainters"]}
-							>
-								<TwitterIcon size={32} round={true} />
-							</TwitterShareButton>
-						</Box>
-						<Intro>{intro}</Intro>
-						<Content dangerouslySetInnerHTML={{
-							__html: this.props.matchReport.content.rendered
-						}} />
-					</Article>
+			<SizeMe>
+				{({ size }) =>
+					<Layout>
+						<div className="md:flex md:flex-grow mt-6">
+							<Aside>
+								<div className="mx-6 md:mx-0">
+									<Sticky enabled={size.width > theme.views.md} top={120}>
+										<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
+									</Sticky>
+								</div>
+							</Aside>
+							<Article>
+								<div>
+									<div className="text-center">
+										<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
+										<br />
+										<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+									</div>
+									<div className="text-center">
+										<AltText>MOTM: {man_of_the_match}</AltText>
+										<br />
+										<AltText>Words by {author}</AltText>
+									</div>
+								</div>
+								<Box className="flex justify-center">
+									<FacebookShareButton
+										url={url}
+										quote={intro}
+										hashtag="SoccerPainters"
+									>
+										<FacebookIcon size={32} round={true} />
+									</FacebookShareButton>
+									<TwitterShareButton
+										url={url}
+										title={intro}
+										hashtags={["SoccerPainters"]}
+									>
+										<TwitterIcon size={32} round={true} />
+									</TwitterShareButton>
+								</Box>
+								<Intro>{intro}</Intro>
+								<Content dangerouslySetInnerHTML={{
+									__html: this.props.matchReport.content.rendered
+								}} />
+							</Article>
 
-				</div>
-			</Layout>
+						</div>
+					</Layout>
+				}
+			</SizeMe>
 		);
 	}
 }
