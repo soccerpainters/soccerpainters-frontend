@@ -156,7 +156,7 @@ class MatchReport extends Component {
 										>
 											<TwitterIcon size={32} round={true} />
 										</TwitterShareButton>
-										{(size.width < theme.views.md && this.props.server.device.isMobile) ?
+										{(size.width < theme.views.md) ?
 											<WhatsappShareButton url={url} title={intro}>
 												<WhatsappIcon size={32} round={true} />
 											</WhatsappShareButton> :

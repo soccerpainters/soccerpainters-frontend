@@ -129,7 +129,7 @@ class ArticleComp extends Component {
 										>
 											<TwitterIcon size={32} round={true} />
 										</TwitterShareButton>
-										{(size.width < theme.views.md && this.props.server.device.isMobile) ?
+										{(size.width < theme.views.md) ?
 											<WhatsappShareButton url={url} title={title}>
 												<WhatsappIcon size={32} round={true} />
 											</WhatsappShareButton> :
