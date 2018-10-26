@@ -7,12 +7,10 @@ import { media } from '../theme';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
 import { 
-	FacebookShareButton,
-	FacebookIcon,
 	TwitterShareButton,
 	TwitterIcon
 } from 'react-share';
-
+import FacebookShareButton from '../global/FacebookShareButton';
 const { publicRuntimeConfig: config } = getConfig();
 
 const Article = styled.article`
@@ -101,13 +99,7 @@ class ArticleComp extends Component {
 							<AltText>Words by {author}</AltText>
 						</div>
 						<Box className="flex justify-center">
-							<FacebookShareButton
-								url={url}
-								quote={title}
-								hashtag="SoccerPainters"
-							>
-								<FacebookIcon size={32} round={true} />
-							</FacebookShareButton>
+							<FacebookShareButton url={url} />
 							<TwitterShareButton
 								url={url}
 								title={title}

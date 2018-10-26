@@ -11,8 +11,8 @@
 	-	// About page logo stickers
 	-	// Add google analytics 
 	- 	Add Bugtracking software
-	-	Remove loading circle
-	- 	Fix poster when scrolling on Match reports
+	-	// Remove loading circle
+	- 	// Fixed poster when scrolling on Match reports
 	-	New Favicon
 	-	Facebook Share Button
 

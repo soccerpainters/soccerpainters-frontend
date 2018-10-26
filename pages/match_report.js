@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
 import Error from "next/error";
 import getConfig from 'next/config';
 import styled from "styled-components";
@@ -10,11 +9,12 @@ import theme from '../tailwind';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
 import {
-	FacebookShareButton,
-	FacebookIcon,
 	TwitterShareButton,
-	TwitterIcon
+	TwitterIcon,
+	WhatsappShareButton,
+	WhatsappIcon
 } from 'react-share';
+import FacebookShareButton from '../global/FacebookShareButton';
 import { getMatchReportBySlug } from "../services/wordpress";
 
 const { publicRuntimeConfig: config } = getConfig();
@@ -33,11 +33,6 @@ const Aside = styled.aside`
 	${ media.md`
 		${tw` mt-8 relative `}
 		flex: 1;
-
-		div  {
-	
-		}
-
 	`}
 `;
 
@@ -97,7 +92,6 @@ class MatchReport extends Component {
 	}
 
 	render () {
-		console.log(this.props.matchReport);
 		if (!this.props.matchReport.title) return <Error statusCode={404} />;
 
 		const {
@@ -139,13 +133,7 @@ class MatchReport extends Component {
 									</div>
 								</div>
 								<Box className="flex justify-center">
-									<FacebookShareButton
-										url={url}
-										quote={intro}
-										hashtag="SoccerPainters"
-									>
-										<FacebookIcon size={32} round={true} />
-									</FacebookShareButton>
+									<FacebookShareButton url={url} />
 									<TwitterShareButton
 										url={url}
 										title={intro}
@@ -153,6 +141,12 @@ class MatchReport extends Component {
 									>
 										<TwitterIcon size={32} round={true} />
 									</TwitterShareButton>
+									{(size.width < theme.views.md && this.props.server.device.isMobile) ?
+										<WhatsappShareButton url={url} title={intro}>
+											<WhatsappIcon size={32} round={true} />
+										</WhatsappShareButton> :
+										null
+									}
 								</Box>
 								<Intro>{intro}</Intro>
 								<Content dangerouslySetInnerHTML={{

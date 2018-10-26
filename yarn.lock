@@ -1301,6 +1301,10 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+
 caniuse-api@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-3.0.0.tgz#5e4d90e2274961d46291997df599e3ed008ee4c0"
@@ -4549,6 +4553,14 @@ react-error-overlay@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-facebook@^6.0.15:
+  version "6.0.15"
+  resolved "https://registry.yarnpkg.com/react-facebook/-/react-facebook-6.0.15.tgz#24914e13ab4f49c8ab73d638535ec97bd78daff5"
+  dependencies:
+    babel-runtime "^6.26.0"
+    can-use-dom "^0.1.0"
+    react-spinner-children "^1.0.8"
+
 react-ga@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.5.3.tgz#0f447c73664c069a5fc341f6f431262e3d4c23c4"
@@ -4586,6 +4598,13 @@ react-sizeme@^2.2.0, react-sizeme@^2.5.2:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
     shallowequal "^1.0.2"
+
+react-spinner-children@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-spinner-children/-/react-spinner-children-1.0.8.tgz#6fdd6a89593c5f233bb56f4deccb812382e6ca74"
+  dependencies:
+    prop-types "^15.6.0"
+    spin.js "^2.3.2"
 
 react-spring@^5.9.2:
   version "5.9.2"
@@ -5108,6 +5127,10 @@ spdx-expression-parse@^3.0.0:
 spdx-license-ids@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.1.tgz#e2a303236cac54b04031fa7a5a79c7e701df852f"
+
+spin.js@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/spin.js/-/spin.js-2.3.2.tgz#6caa56d520673450fd5cfbc6971e6d0772c37a1a"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
