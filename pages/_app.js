@@ -53,7 +53,7 @@ class MyApp extends App {
 		return (
 			<Container>
 				<Head>
-					<title>Official Soccer Painters Site</title>
+					<title>Soccer Painters</title>
 					<Favicon />
 				</Head>
 				<ThemeProvider theme={theme}>

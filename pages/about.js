@@ -6,7 +6,11 @@ import Layout from '../global/Layout';
 import Logo from '../assets/images/logo.png'
 
 const Image = styled.img`
-	width: ${props => props.size}px;
+	width: 160px;
+
+	${media.md`
+		width: 320px;
+	`}
 `
 
 const About = styled.div`
@@ -35,16 +39,16 @@ class AboutComp extends Component {
 				<About>
 					<div>
 						<div className="relative">
-							<div className="text-center">
-								<Image className="mx-auto" size="320" src={Logo} alt="Logo" />
+							<div className="text-center mb-4 mt-6 md:mt-0 md:mb-8">
+								<Image className="mx-auto" src={Logo} alt="Logo" />
 							</div>
-							<p className="md:text-center md:text-xl md:leading-loose z-20">
+							<p className="md:text-center text-lg md:text-xl md:leading-loose z-20">
 								Soccer Painters began life as a amateur football team, established by graduates of the University of the Arts London in 2017.
 								As well as spraying balls on at the weekend, we are building a community of footballing creatives (team of 10s).
 								Our aim is to collaborate and create using music, journalism, apparel and photography to explore the love of the beautiful game.
 							</p>
 							<br/>
-							<p className="md:text-center md:text-xl md:leading-loose z-20">
+							<p className="md:text-center text-lg md:text-xl md:leading-loose z-20">
 								Don’t hesitate to get in <a href="mailto:soccerpainter@gmail.com" className="no-underline"><span className="text-secondary no-underline">contact</span></a> if you’d be interested in working with us or can produce ‘unbelievable tekkers’ on Sunday mornings.
 							</p>
 						</div>

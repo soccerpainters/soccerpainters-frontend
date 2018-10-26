@@ -60,6 +60,7 @@ module.exports = withCSS(withFonts(withImages({
 		appUrl: process.env.APP_URL,
 		wordpressUrl: process.env.WORDPRESS_URL,
 		isProduction: (process.env.NODE_ENV === "production"),
-		logrocket: process.env.LOGROCKET
+		logrocket: process.env.LOGROCKET,
+		fbAppId: process.env.FB_APP_ID
 	}
 })));

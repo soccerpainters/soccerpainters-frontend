@@ -4,12 +4,17 @@ import Head from "next/head";
 import Error from "next/error";
 import getConfig from 'next/config';
 import styled from "styled-components";
+import { format } from 'date-fns'
+import { SizeMe } from 'react-sizeme';
 import { media } from '../theme';
+import theme from '../tailwind';
 import Image from '../global/Image';
 import Layout from '../global/Layout';
-import { 
+import {
 	TwitterShareButton,
-	TwitterIcon
+	TwitterIcon,
+	WhatsappShareButton,
+	WhatsappIcon
 } from 'react-share';
 import FacebookShareButton from '../global/FacebookShareButton';
 const { publicRuntimeConfig: config } = getConfig();
@@ -86,47 +91,61 @@ class ArticleComp extends Component {
 
 		const {
 			author,
-			image
+			image,
+			date
 		} = this.props.article.acf;
 
 		return (
 			<>
-			<Head>
-				<title>{title}</title>
-			</Head>
-			<Layout>
-				<div>
-					<Aside>
-						<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
-						<div className="m-4 md:mx-auto md:w-1/2">
-							<Title>{title}</Title>
-							<br />
-							<AltText>Words by {author}</AltText>
-						</div>
-						<Box className="flex justify-center">
-							<FacebookShareButton
-								url={url}
-								imageUrl={image}
-								title={title}
-								intro={title}
-								type="article"
-							/>
-							<TwitterShareButton
-								url={url}
-								title={title}
-								hashtags={["SoccerPainters"]}
-							>
-								<TwitterIcon size={32} round={true} />
-							</TwitterShareButton>
-						</Box>
-					</Aside>
-					<Article
-						dangerouslySetInnerHTML={{
-							__html: this.props.article.content.rendered
-						}}
-					/>
-				</div>
-			</Layout>
+				<Head>
+					<title>{title}</title>
+				</Head>
+				<SizeMe>
+					{({ size }) =>
+						<Layout>
+							<div>
+								<Aside>
+									<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
+									<div className="m-4 md:mx-auto md:w-1/2">
+										<Title>{title}</Title>
+										<br />
+										<AltText>{format(date, "Qo MMMM YYYY")}</AltText>
+										<br/>
+										<AltText>Words by {author}</AltText>
+										
+									</div>
+									<Box className="flex justify-center">
+										<FacebookShareButton
+											url={url}
+											imageUrl={image}
+											title={title}
+											intro={title}
+											type="article"
+										/>
+										<TwitterShareButton
+											url={url}
+											title={title}
+											hashtags={["SoccerPainters"]}
+										>
+											<TwitterIcon size={32} round={true} />
+										</TwitterShareButton>
+										{(size.width < theme.views.md && this.props.server.device.isMobile) ?
+											<WhatsappShareButton url={url} title={title}>
+												<WhatsappIcon size={32} round={true} />
+											</WhatsappShareButton> :
+											null
+										}
+									</Box>
+								</Aside>
+								<Article
+									dangerouslySetInnerHTML={{
+										__html: this.props.article.content.rendered
+									}}
+								/>
+							</div>
+						</Layout>
+					}
+				</SizeMe>
 			</>
 		);
 	}

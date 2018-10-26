@@ -4,6 +4,7 @@ import getConfig from 'next/config';
 import Head from "next/head";
 import styled from "styled-components";
 import Sticky from 'react-stickynode';
+import { format } from 'date-fns'
 import { SizeMe } from 'react-sizeme';
 import { media } from '../theme';
 import theme from '../tailwind';
@@ -105,7 +106,7 @@ class MatchReport extends Component {
 			home_team,
 			home_team_score,
 			image,
-			man_of_the_match
+			date
 		} = this.props.matchReport.acf;
 
 
@@ -123,7 +124,7 @@ class MatchReport extends Component {
 								<Aside>
 									<div className="mx-6 md:mx-0">
 										<Sticky enabled={size.width > theme.views.md} top={120}>
-											<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
+											<Image className="w-full md:w-2/3 mb-2" src={image} alt={title} />
 										</Sticky>
 									</div>
 								</Aside>
@@ -135,7 +136,7 @@ class MatchReport extends Component {
 											<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
 										</div>
 										<div className="text-center">
-											<AltText>MOTM: {man_of_the_match}</AltText>
+											<AltText>{format(date, "Qo MMMM YYYY")}</AltText>
 											<br />
 											<AltText>Words by {author}</AltText>
 										</div>
