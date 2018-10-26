@@ -40,7 +40,7 @@ const Aside = styled.aside`
 
 const AltText = styled.span`
 	${tw` text-sm inline-block mb-1/2 text-grey-darker leading-none`}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 `;
 
 const TeamScore = styled.span`
@@ -53,7 +53,7 @@ const TeamScore = styled.span`
 
 const Intro = styled.h2`
 	${tw` mb-4 mt-6 `}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 	${ media.md`
 		${tw` mt-6 `}
 	`}
@@ -61,7 +61,7 @@ const Intro = styled.h2`
 
 const Content = styled.div`
 	${tw` text-grey-darker `}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 
 	${ media.md`
 		${tw` text-xl leading-tight `}

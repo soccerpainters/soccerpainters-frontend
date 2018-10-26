@@ -21,7 +21,7 @@ const { publicRuntimeConfig: config } = getConfig();
 
 const Article = styled.article`
 	${tw` md:w-1/2 m-auto p-4 text-grey-darker `}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 
 	${ media.md`
 		${tw` text-xl leading-normal mt-2 `}
@@ -45,7 +45,7 @@ const Aside = styled.aside`
 
 const AltText = styled.span`
 	${tw` text-sm text-grey-darker `}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 `;
 
 const Title = styled.h2`

@@ -15,7 +15,7 @@ const Image = styled.img`
 
 const About = styled.div`
 	${tw` p-6 text-sm leading-loose `}
-	font-family: PT Sans;
+	font-family: 'PT Sans', sans-serif;
 
 	${media.md`
 		${tw` flex justify-center items-center px-6 pb-20 pt-0 `}
