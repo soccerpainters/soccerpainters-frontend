@@ -99,7 +99,7 @@ class ArticleComp extends Component {
 							<AltText>Words by {author}</AltText>
 						</div>
 						<Box className="flex justify-center">
-							<FacebookShareButton url={url} />
+							<FacebookShareButton url={url} imageUrl={image} />
 							<TwitterShareButton
 								url={url}
 								title={title}

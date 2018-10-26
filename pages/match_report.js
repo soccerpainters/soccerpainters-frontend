@@ -133,7 +133,7 @@ class MatchReport extends Component {
 									</div>
 								</div>
 								<Box className="flex justify-center">
-									<FacebookShareButton url={url} />
+									<FacebookShareButton url={url} imageUrl={image} />
 									<TwitterShareButton
 										url={url}
 										title={intro}
