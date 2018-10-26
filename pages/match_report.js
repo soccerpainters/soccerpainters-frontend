@@ -94,6 +94,8 @@ class MatchReport extends Component {
 	render () {
 		if (!this.props.matchReport.title) return <Error statusCode={404} />;
 
+		const title = this.props.matchReport.title.rendered;
+
 		const {
 			intro,
 			author,
@@ -105,6 +107,7 @@ class MatchReport extends Component {
 			man_of_the_match
 		} = this.props.matchReport.acf;
 
+
 		const url = `${config.appUrl}/match_report/${this.props.slug}`;
 
 		return (
@@ -115,7 +118,7 @@ class MatchReport extends Component {
 							<Aside>
 								<div className="mx-6 md:mx-0">
 									<Sticky enabled={size.width > theme.views.md} top={120}>
-										<Image className="w-full md:w-3/5 mb-2" src={image} alt={this.props.matchReport.title} />
+										<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
 									</Sticky>
 								</div>
 							</Aside>
@@ -133,7 +136,13 @@ class MatchReport extends Component {
 									</div>
 								</div>
 								<Box className="flex justify-center">
-									<FacebookShareButton url={url} imageUrl={image} />
+									<FacebookShareButton 
+										url={url}
+										imageUrl={image}
+										title={title}
+										intro={intro}
+										type="match report"
+									 />
 									<TwitterShareButton
 										url={url}
 										title={intro}
