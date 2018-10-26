@@ -25,3 +25,13 @@
          url('../fonts/DrukWideMedium.woff') format('woff'),
          url('../fonts/DrukWideMedium.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('../fonts/PTSans.eot');
+    src: url('../fonts/PTSans.eot') format('embedded-opentype'),
+         url('../fonts/PTSans.woff2') format('woff2'),
+         url('../fonts/PTSans.woff') format('woff'),
+         url('../fonts/PTSans.ttf') format('truetype'),
+         url('../fonts/PTSans.svg#PTSans') format('svg');
+}
