@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Error from "next/error";
 import getConfig from 'next/config';
+import Head from "next/head";
 import styled from "styled-components";
 import Sticky from 'react-stickynode';
 import { SizeMe } from 'react-sizeme';
@@ -111,62 +112,67 @@ class MatchReport extends Component {
 		const url = `${config.appUrl}/match_report/${this.props.slug}`;
 
 		return (
-			<SizeMe>
-				{({ size }) =>
-					<Layout>
-						<div className="md:flex md:flex-grow mt-6">
-							<Aside>
-								<div className="mx-6 md:mx-0">
-									<Sticky enabled={size.width > theme.views.md} top={120}>
-										<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
-									</Sticky>
-								</div>
-							</Aside>
-							<Article>
-								<div>
-									<div className="text-center">
-										<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
-										<br />
-										<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+			<>
+				<Head>
+					<title>{title}</title>
+				</Head>
+				<SizeMe>
+					{({ size }) =>
+						<Layout>
+							<div className="md:flex md:flex-grow mt-6">
+								<Aside>
+									<div className="mx-6 md:mx-0">
+										<Sticky enabled={size.width > theme.views.md} top={120}>
+											<Image className="w-full md:w-3/5 mb-2" src={image} alt={title} />
+										</Sticky>
 									</div>
-									<div className="text-center">
-										<AltText>MOTM: {man_of_the_match}</AltText>
-										<br />
-										<AltText>Words by {author}</AltText>
+								</Aside>
+								<Article>
+									<div>
+										<div className="text-center">
+											<TeamScore>{`${home_team} ${home_team_score}`}</TeamScore>
+											<br />
+											<TeamScore>{`${away_team} ${away_team_score}`}</TeamScore>
+										</div>
+										<div className="text-center">
+											<AltText>MOTM: {man_of_the_match}</AltText>
+											<br />
+											<AltText>Words by {author}</AltText>
+										</div>
 									</div>
-								</div>
-								<Box className="flex justify-center">
-									<FacebookShareButton 
-										url={url}
-										imageUrl={image}
-										title={title}
-										intro={intro}
-										type="match report"
-									 />
-									<TwitterShareButton
-										url={url}
-										title={intro}
-										hashtags={["SoccerPainters"]}
-									>
-										<TwitterIcon size={32} round={true} />
-									</TwitterShareButton>
-									{(size.width < theme.views.md && this.props.server.device.isMobile) ?
-										<WhatsappShareButton url={url} title={intro}>
-											<WhatsappIcon size={32} round={true} />
-										</WhatsappShareButton> :
-										null
-									}
-								</Box>
-								<Intro>{intro}</Intro>
-								<Content dangerouslySetInnerHTML={{
-									__html: this.props.matchReport.content.rendered
-								}} />
-							</Article>
+									<Box className="flex justify-center">
+										<FacebookShareButton
+											url={url}
+											imageUrl={image}
+											title={title}
+											intro={intro}
+											type="match report"
+										/>
+										<TwitterShareButton
+											url={url}
+											title={intro}
+											hashtags={["SoccerPainters"]}
+										>
+											<TwitterIcon size={32} round={true} />
+										</TwitterShareButton>
+										{(size.width < theme.views.md && this.props.server.device.isMobile) ?
+											<WhatsappShareButton url={url} title={intro}>
+												<WhatsappIcon size={32} round={true} />
+											</WhatsappShareButton> :
+											null
+										}
+									</Box>
+									<Intro>{intro}</Intro>
+									<Content dangerouslySetInnerHTML={{
+										__html: this.props.matchReport.content.rendered
+									}} />
+								</Article>
 
-						</div>
-					</Layout>
-				}
-			</SizeMe>
+							</div>
+						</Layout>
+					}
+				</SizeMe>
+			</>
 		);
 	}
 }

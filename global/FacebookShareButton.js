@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { FacebookIcon } from 'react-share';
 import { FacebookProvider, ShareButton } from 'react-facebook';
+import { createThumbnail } from '../helpers/cloudinary'
 
 export default function FacebookShareButton ({ url, imageUrl, title, intro, type }) {
+	const image = createThumbnail(imageUrl, 800); // Get high quality version
 	return (
 		<>
 			<Head>
@@ -10,7 +12,7 @@ export default function FacebookShareButton ({ url, imageUrl, title, intro, type
 				<meta property="og:type" content={type} />
 				<meta property="og:title" content={title} />
 				<meta property="og:description" content={intro} />
-				<meta property="og:image" content={imageUrl} />
+				<meta property="og:image" content={image} />
 			</Head>
 			<FacebookProvider appId="277528442889089">
 				<ShareButton href={url}>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
+import Head from "next/head";
 import Error from "next/error";
 import getConfig from 'next/config';
 import styled from "styled-components";
@@ -89,6 +90,10 @@ class ArticleComp extends Component {
 		} = this.props.article.acf;
 
 		return (
+			<>
+			<Head>
+				<title>{title}</title>
+			</Head>
 			<Layout>
 				<div>
 					<Aside>
@@ -122,6 +127,7 @@ class ArticleComp extends Component {
 					/>
 				</div>
 			</Layout>
+			</>
 		);
 	}
 }
