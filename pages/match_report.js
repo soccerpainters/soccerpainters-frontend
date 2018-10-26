@@ -52,7 +52,7 @@ const TeamScore = styled.span`
 `;
 
 const Intro = styled.h2`
-	${tw` mb-4 mt-6 `}
+	${tw` mb-4 mt-6 font-bold `}
 	font-family: 'PT Sans', sans-serif;
 	${ media.md`
 		${tw` mt-6 `}

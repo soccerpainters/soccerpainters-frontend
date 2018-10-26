@@ -49,7 +49,7 @@ const AltText = styled.span`
 `;
 
 const Title = styled.h2`
-	${tw` uppercase text-xl mb-2 inline-block text-black`};
+	${tw` uppercase text-xl mb-2 inline-block text-black font-bold`};
 `;
 
 const Box = styled.div`
