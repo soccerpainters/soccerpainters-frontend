@@ -15,7 +15,12 @@ export default function FacebookShareButton ({ url, imageUrl, title, intro, type
 				<meta property="og:image" content={image} />
 			</Head>
 			<FacebookProvider appId="277528442889089">
-				<ShareButton href={url}>
+				<ShareButton
+					domain="https://soccerpainters.com"
+					href={url}
+					quote={title}
+					hashtag="SoccerPainters"
+				>
 					<FacebookIcon size={32} round={true} />
 				</ShareButton>
 			</FacebookProvider>
