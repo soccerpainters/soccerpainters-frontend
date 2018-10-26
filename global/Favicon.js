@@ -1,4 +1,8 @@
+import theme from '../tailwind';
 
+ /**
+  * Use http://www.favicomatic.com for Favicons.
+  */
 const Favicon = props => (
 	<>
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/static/favicons/apple-touch-icon-57x57.png" />
@@ -14,13 +18,15 @@ const Favicon = props => (
 		<link rel="icon" type="image/png" href="/static/favicons/favicon-32x32.png" sizes="32x32" />
 		<link rel="icon" type="image/png" href="/static/favicons/favicon-16x16.png" sizes="16x16" />
 		<link rel="icon" type="image/png" href="/static/favicons/favicon-128.png" sizes="128x128" />
-		<meta name="application-name" content="&nbsp;" />
-		<meta name="msapplication-TileColor" content="#FFFFFF" />
-		<meta name="msapplication-TileImage" content="mstile-144x144.png" />
-		<meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
-		<meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
-		<meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
-		<meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+		<meta name="msapplication-TileColor" content={theme.colors.primary} />
+		<meta name="msapplication-TileImage" content="/static/favicons/mstile-144x144.png" />
+		<meta name="msapplication-square70x70logo" content="/static/favicons/mstile-70x70.png" />
+		<meta name="msapplication-square150x150logo" content="/static/favicons/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="/static/favicons/mstile-310x150.png" />
+		<meta name="msapplication-square310x310logo" content="/static/favicons/mstile-310x310.png" />
+		<meta name="application-name" content="Soccer Painters" />
+		<meta name="msapplication-TileColor" content={theme.colors.secondary} />
+		<meta name="theme-color" content={theme.colors.secondary} />
 	</>
 );
 export default Favicon;

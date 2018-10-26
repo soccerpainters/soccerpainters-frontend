@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { media } from '../theme'
 import Layout from '../global/Layout';
-import Pink from '../assets/images/logo-pink.svg'
+import Logo from '../assets/images/logo.png'
 
 const Image = styled.img`
 	width: ${props => props.size}px;
@@ -36,7 +36,7 @@ class AboutComp extends Component {
 					<div>
 						<div className="relative">
 							<div className="text-center">
-								<Image className="mx-auto" size="320" src={Pink} alt="Logo-Pink" />
+								<Image className="mx-auto" size="320" src={Logo} alt="Logo" />
 							</div>
 							<p className="md:text-center md:text-xl md:leading-loose z-20">
 								Soccer Painters began life as a amateur football team, established by graduates of the University of the Arts London in 2017.
