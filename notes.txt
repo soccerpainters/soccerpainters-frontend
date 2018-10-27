@@ -10,13 +10,16 @@
 	-	// About Page footer
 	-	// About page logo stickers
 	-	// Add google analytics 
-	- 	Add Bugtracking software
 	-	// Remove loading circle
 	- 	// Fixed poster when scrolling on Match reports
 	-	// New Favicon
 	-	// Facebook Share Button
-	-	Add Date field to match report and articles
-	-	Facebook App ID
+	-	// Add Date field to match report and articles
+	-	// Facebook App ID
+	- 	Add Bugtracking software
+	-	Add padding to bottom of feed to see title of last card
+	-	Have a look at iPhone Icons background
+	
 
 	REFACTOR:
 	-	Move Article and Match Report fetch logic to Wordpress Api file
