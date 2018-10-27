@@ -1,6 +1,7 @@
 const express = require("express");
 const next = require("next");
-const LRUCache = require('lru-cache')
+const LRUCache = require('lru-cache');
+const compression = require('compression');
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== "production";
@@ -17,6 +18,8 @@ app
 	.prepare()
 	.then(() => {
 		const server = express();
+
+		server.use(compression());
 
 		server.get("/match_report/:slug", (req, res) => {
 			const actualPage = "/match_report";
