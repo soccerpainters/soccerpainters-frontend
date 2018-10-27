@@ -27,11 +27,8 @@ class ImageComp extends Component {
 				data-srcset={`
 					${createThumbnail(src, 300)} 300w, 
 					${createThumbnail(src, 360)} 360w,
-					${createThumbnail(src, 500)} 500w, 
-					${createThumbnail(src, 600)} 600w,
-					${createThumbnail(src, 700)} 700w,
-					${createThumbnail(src, 850)} 850w, 
-					${createThumbnail(src, 1000)} 1000w`
+					${createThumbnail(src, 400)} 400w,
+					${createThumbnail(src, 500)} 500w`
 				} 
 			/>
 		)
