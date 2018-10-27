@@ -16,7 +16,9 @@ class Index extends Component {
 			a = new Date(a.date);
 			b = new Date(b.date);
 			return a > b ? -1 : a < b ? 1 : 0;
-		});
+		})
+		// Filter out "Unpublished" Posts
+		.filter(feedItem => feedItem.acf.published);
 
 		return {
 			feed,
