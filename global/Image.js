@@ -19,18 +19,21 @@ class ImageComp extends Component {
 
 	render () {
 		const { src, alt, className } = this.props;
+
 		return (
-			<picture>
-				<source media="(min-width: 1200px)" data-srcset={createThumbnail(src, 1000)} />
-				<source media="(min-width: 500px)" data-srcset={createThumbnail(src, 500)} />
-				<source media="(min-width: 360px)" data-srcset={createThumbnail(src, 360)} />
-				<source media="(min-width: 320px)" data-srcset={createThumbnail(src, 300)} />
-				<Image
-					className={`${className} lazyestload`}
-					src={createThumbnail(src, 100)}
-					alt={alt}
-				/>
-			</picture>
+			<Image
+				className={`${className} lazyestload`}
+				src={createThumbnail(src, 100)}
+				data-srcset={`
+					${createThumbnail(src, 300)} 300w, 
+					${createThumbnail(src, 360)} 360w,
+					${createThumbnail(src, 500)} 500w, 
+					${createThumbnail(src, 600)} 600w,
+					${createThumbnail(src, 700)} 700w,
+					${createThumbnail(src, 850)} 850w, 
+					${createThumbnail(src, 1000)} 1000w`
+				} 
+			/>
 		)
 	}
 }
