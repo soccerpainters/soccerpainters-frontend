@@ -3,15 +3,8 @@ import styled from "styled-components";
 
 import { media } from '../theme'
 import Layout from '../global/Layout';
+import Base from "../global/Image";
 import Logo from '../assets/images/logo.png'
-
-const Image = styled.img`
-	width: 160px;
-
-	${media.md`
-		width: 320px;
-	`}
-`
 
 const About = styled.div`
 	${tw` p-6 text-sm leading-loose `}
@@ -20,6 +13,14 @@ const About = styled.div`
 	${media.md`
 		${tw` flex justify-center items-center px-6 pb-20 pt-0 `}
 	`}
+`
+
+const Image = styled(Base)`
+	width: 160px;
+
+	${media.md`
+		width: 320px;
+    `}
 `
 
 class AboutComp extends Component {
@@ -40,14 +41,16 @@ class AboutComp extends Component {
 					<div>
 						<div className="relative">
 							<div className="text-center mb-4 mt-6 md:mt-0 md:mb-8">
-								<Image className="mx-auto" src={Logo} alt="Logo" />
+								<Image className="mx-auto w-1"
+									src={`https://res.cloudinary.com/soccerpainters/image/upload/v1540676902/assets/logo.png`}
+									alt={`Soccer Painters Logo`} />
 							</div>
 							<p className="md:text-center text-lg md:text-xl md:leading-loose z-20">
 								Soccer Painters began life as a amateur football team, established by graduates of the University of the Arts London in 2017.
 								As well as spraying balls on at the weekend, we are building a community of footballing creatives (team of 10s).
 								Our aim is to collaborate and create using music, journalism, apparel and photography to explore the love of the beautiful game.
 							</p>
-							<br/>
+							<br />
 							<p className="md:text-center text-lg md:text-xl md:leading-loose z-20">
 								Don’t hesitate to get in <a href="mailto:soccerpainter@gmail.com" className="no-underline"><span className="text-secondary no-underline">contact</span></a> if you’d be interested in working with us or can produce ‘unbelievable tekkers’ on Sunday mornings.
 							</p>
