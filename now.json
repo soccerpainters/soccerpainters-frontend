@@ -1,11 +1,5 @@
 {
 	"name": "Soccer Painters",
 	"dotenv": ".env.production",
-	"type": "npm",
-	"redirects": [
-		{
-			"source": "www.soccerpainters.com",
-			"destination": "soccerpainters.com"
-		}
-	]
+	"type": "npm"
 }
