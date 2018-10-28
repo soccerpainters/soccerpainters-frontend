@@ -1,9 +1,5 @@
 {
-	"name": "soccerpainters",
+	"name": "Soccer Painters",
 	"dotenv": ".env.production",
-	"type": "npm",
-	"alias": [
-		"soccerpainters.com",
-		"www.soccerpainters.com"
-	]
+	"type": "npm"
 }
