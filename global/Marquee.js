@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from "styled-components";
+import { SizeMe } from "react-sizeme";
 import { media } from '../theme';
 
 const Container = styled.div`
@@ -8,11 +9,19 @@ const Container = styled.div`
 
 const Marquee = styled.div`
 
-	${tw`block relative p-4 uppercase`}
+	h3 {
+		display: inline-block;
+	}
+
+	p {
+		display: inline-block;
+	}
+
+	${tw`block relative p-4 uppercase inline-block`}
 
 	@keyframes scroll {
-		from { left: 100%; }
-		to { left: -200%; }
+		from { left: 100vw; }
+		to { left: ${p => `-${p.width}px`}; }
 	}
 
 	animation: scroll 15s linear infinite;
@@ -41,11 +50,15 @@ const Marquee = styled.div`
 
 const MarqueeComp = (props) => (
 	<Container>
-		<Marquee>
-			<h3 className="whitespace-no-wrap" dangerouslySetInnerHTML={{
-				__html: props.text
-			}} />
-		</Marquee>
+		<SizeMe>
+			{({ size }) =>
+				<Marquee width={size.width}>
+					<h3 className="whitespace-no-wrap" dangerouslySetInnerHTML={{
+						__html: props.text
+					}} />
+				</Marquee>
+			}
+		</SizeMe>
 	</Container>
 )
 
