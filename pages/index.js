@@ -31,7 +31,7 @@ class Index extends Component {
 		return (
 			<>
 				<Layout Footer={() => <Marquee text={bannerText} />}>
-					<div className="p-6 block w-full">
+					<div className="p-6 block w-full pb-8 md:pb-0">
 						<Responsive>
 							<Grid feed={this.props.feed} />
 						</Responsive>
